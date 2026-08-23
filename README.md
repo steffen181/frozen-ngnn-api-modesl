@@ -3,7 +3,9 @@
 `steffen-negabo/ngnn-sparse-v1-api` is a frozen, API-only text-embedding
 model prepared for task-specific MTEB review. This repository publishes model
 information and the API contract; it does not publish model weights, runtime
-caches, evaluation texts, embeddings, or access credentials.
+caches, evaluation texts, embeddings, or access credentials. Its canonical
+public model report is this repository:
+<https://github.com/steffen181/frozen-ngnn-api-modesl>.
 
 ## Scope
 
@@ -26,13 +28,15 @@ derive, a global MTEB benchmark aggregate.
 | Similarity | cosine |
 | API schema | v1 |
 | Model form | API-only; no weights are distributed |
+| License | MIT; see [LICENSE](LICENSE) |
+| Contact | [steffen@negabo.com](mailto:steffen@negabo.com) |
 
 ## Access
 
 The serving process is operated by the model provider. MTEB reviewers may
-request time-limited API access through the contact recorded in this
-repository's release metadata. Access is issued separately from this source
-repository and credentials are never committed here.
+request time-limited API access from [steffen@negabo.com](mailto:steffen@negabo.com).
+Access is issued separately from this source repository and credentials are
+never committed here.
 
 The external endpoint, reviewer credential, and expiry are deliberately not
 published. See [API_CONTRACT.md](API_CONTRACT.md) for the stable interface and
@@ -57,9 +61,10 @@ release-evidence values, not an official MTEB submission or global score.
 Further methodology, provenance boundaries, and limitations are in
 [MODEL_REPORT.md](MODEL_REPORT.md).
 
-## Before publishing this repository
+## Publication status
 
-The owner must complete the remaining release metadata in
-[PUBLICATION_GATE.md](PUBLICATION_GATE.md), especially the license and a
-public contact. Do not add credentials, local paths, cached vectors, model
-artifacts, raw evaluation data, or evaluation request/response bodies.
+The public model report, MIT license, and reviewer contact are now recorded.
+The remaining operational release checks are in
+[PUBLICATION_GATE.md](PUBLICATION_GATE.md). Do not add credentials, local
+paths, cached vectors, model artifacts, raw evaluation data, or evaluation
+request/response bodies.

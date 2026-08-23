@@ -1,15 +1,14 @@
 # Publication gate
 
-This starter package is intentionally incomplete until the repository owner
-provides the following public metadata. Do not open the upstream MTEB model PR
-until every item is resolved.
+The public model report, MIT license, and contact are established. Do not open
+the upstream MTEB model PR until every remaining operational item is resolved.
 
-- [ ] Add the model's publication license. The FineWeb calibration-source
-  license is not automatically the model/API license.
-- [ ] Add a public contact, preferably a GitHub handle, for MTEB reviewer
-  access and operational questions.
-- [ ] After creating the public repository, use its HTTPS URL as the model
-  report/reference URL in the upstream MTEB `ModelMeta`.
+- [x] The publication license is MIT; see [LICENSE](LICENSE). The FineWeb
+  calibration-source license is not automatically the model/API license.
+- [x] The public operational and MTEB-review contact is
+  [steffen@negabo.com](mailto:steffen@negabo.com).
+- [x] The public model report/reference URL is
+  <https://github.com/steffen181/frozen-ngnn-api-modesl>.
 - [ ] Define the reviewer-access request channel and actual HTTPS API hostname
   outside the repository; never commit the endpoint if it is not intended to
   be public.

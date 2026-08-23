@@ -15,11 +15,17 @@ task routing is rejected rather than silently substituted.
 ## Availability
 
 The model is served through a controlled API. No model weights are distributed
-by this repository. MTEB reviewers can request time-limited access from the
-model contact once that contact is published in the release metadata.
+by this repository. MTEB reviewers can request time-limited access from
+[steffen@negabo.com](mailto:steffen@negabo.com).
 
 The API is intended for reproducible review of the documented frozen revision.
 It is not a promise of perpetual, unauthenticated, or unrestricted service.
+
+## License and contact
+
+The model report and API contract are published under the MIT License; see
+[LICENSE](LICENSE). Operational and MTEB-review questions can be sent to
+[steffen@negabo.com](mailto:steffen@negabo.com).
 
 ## Training and provenance boundaries
 
@@ -54,4 +60,3 @@ the upstream model and result review process accepts them.
 - Unsupported task routing fails closed.
 - A future upstream MTEB wrapper must be validated against the current MTEB
   release before any result submission.
-- The model's license and public contact must be added before publication.
