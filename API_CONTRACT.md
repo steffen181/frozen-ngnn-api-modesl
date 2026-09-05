@@ -2,7 +2,8 @@
 
 ## Transport and authentication
 
-The API is exposed through HTTPS by a provider-operated gateway. The service
+This document describes the local study API and its intended HTTPS gateway
+contract. No live public endpoint is announced. The service
 uses JSON request and response bodies. Protected endpoints require:
 
 ```text
@@ -42,7 +43,9 @@ limit, or schema version differs from the expected values.
 
 ## `POST /v1/encode`
 
-The request body contains a list of UTF-8 strings and optional task metadata.
+The request body contains a list of UTF-8 strings and required task routing.
+Only texts already represented in the frozen runtime caches are supported;
+an unseen text fails even when its task name is supported.
 The batch length must not exceed `max_batch_size` from `/v1/model-info`.
 
 ```json
@@ -55,8 +58,9 @@ The batch length must not exceed `max_batch_size` from `/v1/model-info`.
 }
 ```
 
-`task_name` is either a string or `null`. For the task-specific review scope,
-clients use only `SciFact`, `STSBenchmark`, and `Banking77Classification.v2`.
+For the task-specific review scope, `task_name` must be `SciFact`,
+`STSBenchmark`, or `Banking77Classification.v2`. Missing, null, unknown and
+direct `generic` routes are rejected because fallback is disabled.
 `hf_split`, `hf_subset`, and `prompt_type` are optional contextual fields for
 the MTEB wrapper; the frozen embedding service does not derive alternate
 embeddings from them.

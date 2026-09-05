@@ -2,7 +2,7 @@
 
 ## Model description
 
-Frozen NGNN API Model is an API-only text-embedding service identified as
+Frozen NGNN API Model is a cache-only local study service identified as
 `steffen-negabo/ngnn-sparse-v1-api`. The service emits 512-dimensional vectors
 and uses cosine similarity. Its frozen serving revision is
 `frozen_ngnn_task_router_472a3d9e755d8c8e`.
@@ -14,9 +14,9 @@ task routing is rejected rather than silently substituted.
 
 ## Availability
 
-The model is served through a controlled API. No model weights are distributed
-by this repository. MTEB reviewers can request time-limited access from
-[steffen@negabo.com](mailto:steffen@negabo.com).
+The model has been evaluated through a local API. No public general encoder
+endpoint is announced and no weights are distributed by this repository.
+Controlled inspection can be discussed with [steffen@negabo.com](mailto:steffen@negabo.com).
 
 The API is intended for reproducible review of the documented frozen revision.
 It is not a promise of perpetual, unauthenticated, or unrestricted service.
@@ -34,9 +34,10 @@ The frozen generic-default artifact was calibrated from the FineWeb
 `9bb295ddab0e05d785b879661af7260fed5140fc`. The local calibration source is
 documented as ODC-By-1.0.
 
-SciFact, STSBenchmark, and Banking77Classification.v2 task text was
-exclusion-only input. It was not used for calibration, cache completion, or
-model fitting. The public repository contains no calibration text, evaluation
+For calibration and compressor fitting, SciFact, STSBenchmark, and
+Banking77Classification.v2 task text was exclusion-only input. Separate runtime
+caches provide base embeddings for the supported evaluation texts. No compressor
+fitting occurs during evaluation. The public repository contains no calibration text, evaluation
 text, embeddings, cache contents, artifact files, or private provenance paths.
 
 ## Task-specific evidence
@@ -56,7 +57,13 @@ the upstream model and result review process accepts them.
 ## Limitations
 
 - Only the documented frozen revision is in scope.
+- Only texts already represented in the frozen runtime caches can be encoded.
+- The generic upstream mock inputs are unsupported; this candidate does not
+  currently meet the normal MTEB model-integration requirements.
 - API availability is controlled and may be time-limited for reviewers.
 - Unsupported task routing fails closed.
-- A future upstream MTEB wrapper must be validated against the current MTEB
-  release before any result submission.
+- Historical inference depends on batch composition. A future encoder with
+  deterministic per-text inference is a different model version and requires
+  new results.
+- [Evaluation request #5278](https://github.com/embeddings-benchmark/mteb/issues/5278)
+  was closed on 2026-08-24. No upstream model or results PR has been submitted.

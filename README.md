@@ -1,7 +1,7 @@
 # Frozen NGNN API Model
 
-`steffen-negabo/ngnn-sparse-v1-api` is a frozen, API-only text-embedding
-model prepared for task-specific MTEB review. This repository publishes model
+`steffen-negabo/ngnn-sparse-v1-api` is a frozen, cache-only study service for
+three text-embedding tasks. This repository publishes model
 information and the API contract; it does not publish model weights, runtime
 caches, evaluation texts, embeddings, or access credentials. Its canonical
 public model report is this repository:
@@ -33,10 +33,10 @@ derive, a global MTEB benchmark aggregate.
 
 ## Access
 
-The serving process is operated by the model provider. MTEB reviewers may
-request time-limited API access from [steffen@negabo.com](mailto:steffen@negabo.com).
-Access is issued separately from this source repository and credentials are
-never committed here.
+The service has been evaluated locally. No publicly reachable general text
+encoder endpoint is announced. Controlled access to the frozen local study can
+be discussed with [steffen@negabo.com](mailto:steffen@negabo.com), but access
+does not remove the cache-only input restriction. Credentials are never committed.
 
 The external endpoint, reviewer credential, and expiry are deliberately not
 published. See [API_CONTRACT.md](API_CONTRACT.md) for the stable interface and
@@ -45,9 +45,10 @@ published. See [API_CONTRACT.md](API_CONTRACT.md) for the stable interface and
 ## Evidence and reproducibility
 
 The frozen router resolves each supported task through an explicit
-`generic_default` entry, with fallback disabled. Evaluation-task text was used
-only as exclusion input: it was not used for calibration, cache fill, or model
-fitting.
+`generic_default` entry, with fallback disabled. For calibration and compressor
+fitting, evaluation-task text was used only as exclusion input. Separate runtime
+caches contain the base embeddings of the supported benchmark texts; evaluation
+does not fit the compressor. Previously unseen texts cannot be encoded.
 
 Local replay evidence recorded the following task metrics. These are local
 release-evidence values, not an official MTEB submission or global score.
@@ -63,8 +64,14 @@ Further methodology, provenance boundaries, and limitations are in
 
 ## Publication status
 
-The public model report, MIT license, and reviewer contact are now recorded.
-The remaining operational release checks are in
-[PUBLICATION_GATE.md](PUBLICATION_GATE.md). Do not add credentials, local
+As of 2026-09-05, the model report is public, but there is no accepted MTEB
+model entry or results submission. [Evaluation request #5278](https://github.com/embeddings-benchmark/mteb/issues/5278)
+was closed on 2026-08-24 with guidance to add a model and evaluate the public
+tasks. The cache-only wrapper fails generic mock inputs, so the existing
+candidate does not meet the normal model-integration path. A future general
+encoder requires a separate identity and new evaluation; the scores above
+cannot be transferred to it.
+
+See [PUBLICATION_GATE.md](PUBLICATION_GATE.md). Do not add credentials, local
 paths, cached vectors, model artifacts, raw evaluation data, or evaluation
 request/response bodies.
