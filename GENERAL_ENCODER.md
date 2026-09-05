@@ -33,6 +33,46 @@ The code verifies the artifact SHA-256 before loading tensors or initializing
 the provider. Loading uses NumPy with `allow_pickle=False`. No private
 repository, runtime vector cache or hosted NGNN service is required.
 
+## Run locally
+
+Clone this repository, create a Python 3.10 environment, and install
+[`requirements.txt`](requirements.txt). CPU PyTorch is sufficient. Keep
+`ngnn_general_encoder.py` and `model.npz` together. Supply your own
+`OPENAI_API_KEY` through your environment, then run:
+
+```python
+from ngnn_general_encoder import NgnnGeneralEncoder
+
+model = NgnnGeneralEncoder()
+vectors = model.encode(["A previously unseen sentence.", "Another sentence."])
+assert vectors.shape == (2, 512)
+```
+
+`encode` makes billable OpenAI embedding requests. The tokenizer may download
+its public vocabulary on first use. You can instead pass an OpenAI-compatible
+`client` to the constructor. Never put keys in repository files or MTEB model
+keyword arguments: MTEB saves those arguments in result metadata.
+
+The proposed self-contained MTEB implementation is in
+[`mteb_models/ngnn.py`](mteb_models/ngnn.py). Copy it to
+`mteb/models/model_implementations/ngnn.py` in the pinned MTEB checkout before
+installing that checkout. With `OPENAI_API_KEY` in the environment:
+
+```python
+import mteb
+
+model = mteb.get_model(
+    "steffen-negabo/ngnn-general-encoder-v1",
+    revision="ngnn_general_encoder_singleton_e55ba679_20260906",
+    device="cpu",
+)
+```
+
+The MTEB loader downloads the weights from immutable public commit
+`83773ff1ad83accc729c8d748d6991077842fbc0` and checks their SHA-256. It requires
+PyTorch 2.11.0 because top-k tie behavior affects this compressor. This model
+is not yet included in an official MTEB release.
+
 ## Input rules
 
 - Empty or whitespace-only text produces a local zero vector.
@@ -56,6 +96,12 @@ evaluation is being prepared with MTEB 2.20.10, upstream commit
 original STSBenchmark, Banking77Classification.v2 and NFCorpus. Original STS
 is superseded by STSBenchmark.v2 upstream; results must retain their actual
 task identity.
+
+Current native `mteb.get_model` / `get_model_meta` registration was verified.
+All 28 compatible text mock tasks passed with synthetic provider embeddings;
+see the complete [offline mock report](verification/offline_mock_run.md).
+That report verifies interfaces, not embedding quality or live API access.
+The actual API smoke test and real-provider mock run are still pending.
 
 The historical [frozen study report](MODEL_REPORT.md) evaluates a different,
 batch-dependent cache-only model. Its scores do not describe this general

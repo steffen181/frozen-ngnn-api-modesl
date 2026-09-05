@@ -1,10 +1,12 @@
 # Frozen NGNN API Model
 
-**2026-09-06:** The compressor weights are now public as [`model.npz`](model.npz),
-with an [integrity manifest](artifact_manifest.json). The independently usable
-general encoder and its MTEB integration are being prepared under
+**2026-09-06:** The general encoder's [source](ngnn_general_encoder.py) and
+[compressor weights](model.npz) are public under MIT. It runs locally using
+the caller's OpenAI API access and accepts previously unseen text as
 `steffen-negabo/ngnn-general-encoder-v1`. See [GENERAL_ENCODER.md](GENERAL_ENCODER.md)
-for its distinct revision, input rules and evaluation status.
+for setup, its distinct revision and evaluation status. Its MTEB integration
+passed all 28 compatible mock tasks with an offline provider stub; live API
+verification and upstream acceptance remain pending.
 
 ## Historical frozen study
 
