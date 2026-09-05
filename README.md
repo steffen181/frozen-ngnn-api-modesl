@@ -6,7 +6,8 @@ the caller's OpenAI API access and accepts previously unseen text as
 `steffen-negabo/ngnn-general-encoder-v1`. See [GENERAL_ENCODER.md](GENERAL_ENCODER.md)
 for setup, its distinct revision and evaluation status. Its MTEB integration
 passed all 28 compatible mock tasks with an offline provider stub; live API
-verification and upstream acceptance remain pending.
+verification and upstream acceptance remain pending. Fresh results for three
+tasks and matched raw controls are documented in the general encoder report.
 
 ## Historical frozen study
 

@@ -1,0 +1,166 @@
+{
+  "model_name": "steffen-negabo/ngnn-general-encoder-v1",
+  "revision": "ngnn_general_encoder_singleton_e55ba679_20260906",
+  "mteb_version": "2.20.10",
+  "mteb_source_revision": "ed47a25455157433b458db2625e72960468597ab",
+  "base_embeddings": "original archived OpenAI responses, verified against immutable normalized release values",
+  "new_provider_calls": 0,
+  "tasks": [
+    {
+      "variant": "general",
+      "task_name": "SciFact",
+      "main_scores": [
+        0.63517
+      ],
+      "dataset_path": "mteb/scifact",
+      "dataset_revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9",
+      "ordered_text_hashes_sha256": "c3339c34109dc81f6a81bb30a17ba5dfb201ca5c154c0f82c30e7bb191c64d91",
+      "model_sources": {
+        "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
+        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/general/SciFact.json",
+          "sha256": "3cb060d68d401d37ee650f09d8b44473b68051417e23fbc41056aee51ccdf239"
+        },
+        {
+          "path": "evaluation/2026-09-06/general/model_meta.json",
+          "sha256": "ba3bd961e0db6302a44e04ae2d6a688b3c60eaef3972f1621f88410f1b993519"
+        }
+      ]
+    },
+    {
+      "variant": "general",
+      "task_name": "STSBenchmark",
+      "main_scores": [
+        0.824895
+      ],
+      "dataset_path": "mteb/stsbenchmark-sts",
+      "dataset_revision": "b0fddb56ed78048fa8b90373c8a3cfc37b684831",
+      "ordered_text_hashes_sha256": "7ce80cdd16956833c72c912ff90907940396512033b6ee234d8851a65028c1bd",
+      "model_sources": {
+        "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
+        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/general/STSBenchmark.json",
+          "sha256": "fcc698f819c0664dd330b04aa5f30f7826251731339d85b0e4331c5c1b652e75"
+        },
+        {
+          "path": "evaluation/2026-09-06/general/model_meta.json",
+          "sha256": "ba3bd961e0db6302a44e04ae2d6a688b3c60eaef3972f1621f88410f1b993519"
+        }
+      ]
+    },
+    {
+      "variant": "general",
+      "task_name": "Banking77Classification.v2",
+      "main_scores": [
+        0.832575
+      ],
+      "dataset_path": "mteb/banking77",
+      "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+      "ordered_text_hashes_sha256": "4e90fcc1830a95785f6558db3ff08bd1e9b89f09f5c089a8b5d1589c066cd9da",
+      "model_sources": {
+        "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
+        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/general/Banking77Classification.v2.json",
+          "sha256": "54499432cfaf6ad0b3fef019e7da8f612342acd9a81af61765ef71ac7d9a6561"
+        },
+        {
+          "path": "evaluation/2026-09-06/general/model_meta.json",
+          "sha256": "ba3bd961e0db6302a44e04ae2d6a688b3c60eaef3972f1621f88410f1b993519"
+        }
+      ]
+    },
+    {
+      "variant": "raw3072",
+      "task_name": "SciFact",
+      "main_scores": [
+        0.77712
+      ],
+      "dataset_path": "mteb/scifact",
+      "dataset_revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9",
+      "ordered_text_hashes_sha256": "c3339c34109dc81f6a81bb30a17ba5dfb201ca5c154c0f82c30e7bb191c64d91",
+      "model_sources": {
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/raw3072/SciFact.json",
+          "sha256": "f7b2ac449bd066f620e25b1da3095f75f01fc0da13aefd709e378ac398f420db"
+        },
+        {
+          "path": "evaluation/2026-09-06/raw3072/model_meta.json",
+          "sha256": "73557d1803b2d37c908dad7694073ef2ed0feccf8c5f4127e1b3dae7c1dda2bf"
+        }
+      ]
+    },
+    {
+      "variant": "raw3072",
+      "task_name": "STSBenchmark",
+      "main_scores": [
+        0.835725
+      ],
+      "dataset_path": "mteb/stsbenchmark-sts",
+      "dataset_revision": "b0fddb56ed78048fa8b90373c8a3cfc37b684831",
+      "ordered_text_hashes_sha256": "7ce80cdd16956833c72c912ff90907940396512033b6ee234d8851a65028c1bd",
+      "model_sources": {
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/raw3072/STSBenchmark.json",
+          "sha256": "692924c4fd06c5a925f626034fe0a7ef6e54dd2ec9367d79ee1048bf76b1526e"
+        },
+        {
+          "path": "evaluation/2026-09-06/raw3072/model_meta.json",
+          "sha256": "73557d1803b2d37c908dad7694073ef2ed0feccf8c5f4127e1b3dae7c1dda2bf"
+        }
+      ]
+    },
+    {
+      "variant": "raw3072",
+      "task_name": "Banking77Classification.v2",
+      "main_scores": [
+        0.858257
+      ],
+      "dataset_path": "mteb/banking77",
+      "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+      "ordered_text_hashes_sha256": "4e90fcc1830a95785f6558db3ff08bd1e9b89f09f5c089a8b5d1589c066cd9da",
+      "model_sources": {
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/raw3072/Banking77Classification.v2.json",
+          "sha256": "d64324c0798036a6ba62006c20d63210ef80fbac575119c8b2ce401891a0a36f"
+        },
+        {
+          "path": "evaluation/2026-09-06/raw3072/model_meta.json",
+          "sha256": "73557d1803b2d37c908dad7694073ef2ed0feccf8c5f4127e1b3dae7c1dda2bf"
+        }
+      ]
+    }
+  ]
+}

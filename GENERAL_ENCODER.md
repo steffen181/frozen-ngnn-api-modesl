@@ -90,12 +90,32 @@ using the same conservative 8,191-token input limit as MTEB's OpenAI model.
 
 ## Evaluation and submission
 
-Publication of the weights does not constitute an accepted MTEB entry. Fresh
-evaluation is being prepared with MTEB 2.20.10, upstream commit
-`ed47a25455157433b458db2625e72960468597ab`. Planned tasks are SciFact,
-original STSBenchmark, Banking77Classification.v2 and NFCorpus. Original STS
-is superseded by STSBenchmark.v2 upstream; results must retain their actual
-task identity.
+Publication does not constitute an accepted MTEB entry. Fresh evaluation
+completed with MTEB 2.20.10, upstream commit
+`ed47a25455157433b458db2625e72960468597ab`, on SciFact, original STSBenchmark
+and Banking77Classification.v2. Original STS is superseded by STSBenchmark.v2
+upstream; these results retain their actual task identity.
+
+| Task / main metric | General NGNN 512D | Matched raw 3072D |
+| --- | ---: | ---: |
+| SciFact / nDCG@10 | 0.635170 | 0.777120 |
+| STSBenchmark / cosine Spearman | 0.824895 | 0.835725 |
+| Banking77Classification.v2 / accuracy | 0.832575 | 0.858257 |
+
+NGNN falls below raw on all three tasks while using one sixth of the float32
+vector bytes. Native MTEB evaluators produced new TaskResults from verified
+original archived OpenAI responses; no provider calls were needed for this
+evaluation. Every imported raw vector was checked by reproducing its original
+L2-normalized value against the immutable release archive. The public
+[result manifest and exact TaskResults](evaluation/2026-09-06/summary.json)
+record task/data revisions, source hashes and file hashes. No global aggregate
+or quality advantage is claimed.
+
+NFCorpus and provider-native 512D controls remain pending their missing API
+vectors. The four-task request plan has 236 requests and 4,254,510 input tokens,
+estimated at USD 0.55308630 using the current
+[USD 0.13 per million token price](https://developers.openai.com/api/docs/models/text-embedding-3-large).
+Those requests have not been made.
 
 Current native `mteb.get_model` / `get_model_meta` registration was verified.
 All 28 compatible text mock tasks passed with synthetic provider embeddings;

@@ -1,0 +1,21 @@
+{
+  "mteb_version": "2.20.10",
+  "mteb_source_revision": "ed47a25455157433b458db2625e72960468597ab",
+  "torch_version": "2.11.0",
+  "ruff_version": "0.16.0",
+  "upstream_ruff_check": "passed",
+  "upstream_ruff_format": "passed",
+  "upstream_patch_apply_check": "passed",
+  "offline_mock_tasks_passed": 28,
+  "offline_mock_tasks_failed": 0,
+  "live_provider_verified": false,
+  "new_paid_provider_requests": 0,
+  "public_weights_commit": "83773ff1ad83accc729c8d748d6991077842fbc0",
+  "source_files": {
+    "submission/mteb/ngnn.py": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
+    "public_repo/frozen-ngnn-api-model/ngnn_general_encoder.py": "f9e361a01411e67bbf811590b39bcdaea7a890fed6c179dab9576df2b5f3da5f",
+    "public_repo/frozen-ngnn-api-model/model.npz": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a"
+  },
+  "focused_tests_passed": 88,
+  "focused_test_log_sha256": "b24acac570487b0948f5095e3636ec395143e1edb3ef74a705f408b51ff40062"
+}

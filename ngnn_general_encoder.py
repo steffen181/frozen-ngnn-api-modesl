@@ -9,19 +9,22 @@ The postprocessor uses CPU PyTorch 2.11.0; its singleton normalization and
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
 import hashlib
-from io import BytesIO
 import math
 import os
-from pathlib import Path
 import struct
-from typing import Any
+from collections.abc import Mapping
+from io import BytesIO
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 import torch
 
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
+DEFAULT_ARTIFACT_PATH = Path(__file__).with_name("model.npz")
 MODEL_NAME = "steffen-negabo/ngnn-general-encoder-v1"
 MODEL_REVISION = "ngnn_general_encoder_singleton_e55ba679_20260906"
 ARTIFACT_REVISION = "sparse_ngnn_v1_api_20260711_469679b8"
@@ -47,10 +50,14 @@ class FrozenNgnnArtifact:
 
     def __init__(self, dictionary: np.ndarray, channel_scale: np.ndarray) -> None:
         self._basis = torch.as_tensor(dictionary, dtype=torch.float64, device="cpu")
-        self._channel_scale = torch.as_tensor(channel_scale.T, dtype=torch.float32, device="cpu")
+        self._channel_scale = torch.as_tensor(
+            channel_scale.T, dtype=torch.float32, device="cpu"
+        )
         system = self._basis.T @ self._basis
         # Preserve the source solver's regularizer and float64 arithmetic.
-        system = system + (1e-6 + 1e-8) * torch.eye(OUTPUT_DIM, dtype=torch.float64, device="cpu")
+        system = system + (1e-6 + 1e-8) * torch.eye(  # noqa: PLR6104 -- preserve source arithmetic
+            OUTPUT_DIM, dtype=torch.float64, device="cpu"
+        )
         self._cholesky, info = torch.linalg.cholesky_ex(system)
         if int(info.item()) != 0:
             raise NgnnGeneralEncoderError("Frozen artifact ridge factorization failed")
@@ -60,16 +67,22 @@ class FrozenNgnnArtifact:
         try:
             data = Path(path).read_bytes()
         except OSError:
-            raise NgnnGeneralEncoderError("Could not read frozen NGNN artifact") from None
+            raise NgnnGeneralEncoderError(
+                "Could not read frozen NGNN artifact"
+            ) from None
         if hashlib.sha256(data).hexdigest() != ARTIFACT_SHA256:
             raise NgnnGeneralEncoderError("Frozen NGNN artifact SHA-256 mismatch")
         # Load the same verified bytes; no pickle or remote code is involved.
         try:
             with np.load(BytesIO(data), allow_pickle=False) as payload:
                 dictionary = np.asarray(payload["dictionary"], dtype=np.float32)
-                channel_scale = np.asarray(payload["code_channel_scale"], dtype=np.float32)
+                channel_scale = np.asarray(
+                    payload["code_channel_scale"], dtype=np.float32
+                )
         except Exception:
-            raise NgnnGeneralEncoderError("Could not load frozen NGNN artifact") from None
+            raise NgnnGeneralEncoderError(
+                "Could not load frozen NGNN artifact"
+            ) from None
         return cls(dictionary, channel_scale)
 
     @torch.inference_mode()
@@ -79,27 +92,37 @@ class FrozenNgnnArtifact:
         except (TypeError, ValueError, OverflowError):
             raise NgnnGeneralEncoderError("Base embeddings must be numeric") from None
         if rows.ndim != 2 or rows.shape[1] != INPUT_DIM:
-            raise NgnnGeneralEncoderError(f"Base embeddings must have shape (rows, {INPUT_DIM})")
+            raise NgnnGeneralEncoderError(
+                f"Base embeddings must have shape (rows, {INPUT_DIM})"
+            )
         if not np.isfinite(rows).all():
-            raise NgnnGeneralEncoderError("Base embeddings must contain only finite values")
+            raise NgnnGeneralEncoderError(
+                "Base embeddings must contain only finite values"
+            )
         if not len(rows):
             return np.empty((0, OUTPUT_DIM), dtype=np.float32)
         output = []
         for row in rows:
-            target = torch.as_tensor(row.reshape(-1, 1), dtype=torch.float32, device="cpu").contiguous()
+            target = torch.as_tensor(
+                row.reshape(-1, 1), dtype=torch.float32, device="cpu"
+            ).contiguous()
             rhs = self._basis.T @ target.to(dtype=torch.float64)
             dense = torch.cholesky_solve(rhs, self._cholesky).to(dtype=torch.float32)
             # Normalization is across the singleton sample axis. Do not batch
             # this solve or change the top-k tie rule for the current revision.
             rms = dense.square().mean(dim=1).sqrt().clamp_min(1e-6)
             normalized = dense / rms.unsqueeze(1)
-            indices = normalized.abs().topk(256, dim=0, largest=True, sorted=False).indices
+            indices = (
+                normalized.abs().topk(256, dim=0, largest=True, sorted=False).indices
+            )
             sparse = torch.zeros_like(normalized)
             sparse.scatter_(0, indices, normalized.gather(0, indices))
             output.append((sparse / self._channel_scale).T.numpy()[0])
         result = np.vstack(output).astype(np.float32, copy=False)
         if not np.isfinite(result).all():
-            raise NgnnGeneralEncoderError("Frozen artifact transform produced non-finite values")
+            raise NgnnGeneralEncoderError(
+                "Frozen artifact transform produced non-finite values"
+            )
         return result
 
 
@@ -118,25 +141,33 @@ class NgnnGeneralEncoder:
 
     def __init__(
         self,
-        artifact_path: str | Path = Path(__file__).with_name("model.npz"),
+        artifact_path: str | Path = DEFAULT_ARTIFACT_PATH,
         *,
         api_key: str | None = None,
-        client: Any | None = None,
+        client: Any | None = None,  # noqa: ANN401 -- accepts OpenAI-compatible offline clients
         provider_batch_size: int = 100,
     ) -> None:
         if type(provider_batch_size) is not int or provider_batch_size <= 0:
-            raise NgnnGeneralEncoderError("provider_batch_size must be a positive integer")
+            raise NgnnGeneralEncoderError(
+                "provider_batch_size must be a positive integer"
+            )
         self.artifact = FrozenNgnnArtifact.from_file(artifact_path)
         if client is None:
-            key = api_key if api_key is not None else os.environ.get("OPENAI_API_KEY", "")
+            key = (
+                api_key if api_key is not None else os.environ.get("OPENAI_API_KEY", "")
+            )
             if not isinstance(key, str) or not key.strip():
-                raise NgnnGeneralEncoderError("Set OPENAI_API_KEY or pass your own api_key or client")
+                raise NgnnGeneralEncoderError(
+                    "Set OPENAI_API_KEY or pass your own api_key or client"
+                )
             try:
                 from openai import OpenAI
 
                 client = OpenAI(api_key=key, max_retries=2)
             except Exception:
-                raise NgnnGeneralEncoderError("Could not initialize base embedding provider") from None
+                raise NgnnGeneralEncoderError(
+                    "Could not initialize base embedding provider"
+                ) from None
         self.client = client
         self.provider_batch_size = provider_batch_size
 
@@ -144,10 +175,10 @@ class NgnnGeneralEncoder:
         self,
         inputs: Iterable[Any] | Mapping[str, Any] | str,
         *,
-        task_metadata: Any | None = None,
+        task_metadata: object | None = None,
         hf_split: str | None = None,
         hf_subset: str | None = None,
-        prompt_type: Any | None = None,
+        prompt_type: object | None = None,
         **kwargs: Any,
     ) -> np.ndarray:
         del task_metadata, hf_split, hf_subset, prompt_type, kwargs
@@ -165,7 +196,9 @@ class NgnnGeneralEncoder:
                     model=BASE_EMBEDDING_MODEL, input=batch, encoding_format="float"
                 )
             except Exception:
-                raise NgnnGeneralEncoderError("Base embedding provider request failed") from None
+                raise NgnnGeneralEncoderError(
+                    "Base embedding provider request failed"
+                ) from None
             try:
                 data = list(response.data)
                 if len(data) != len(batch):
@@ -178,9 +211,13 @@ class NgnnGeneralEncoder:
                         raise ValueError("duplicate response index")
                     by_index[item.index] = item
                 for index, text in enumerate(batch):
-                    vectors[_text_hash(text)] = [float(x) for x in by_index[index].embedding]
+                    vectors[_text_hash(text)] = [
+                        float(x) for x in by_index[index].embedding
+                    ]
             except Exception:
-                raise NgnnGeneralEncoderError("Base embedding provider response is malformed") from None
+                raise NgnnGeneralEncoderError(
+                    "Base embedding provider response is malformed"
+                ) from None
         rows = []
         positions = []
         for position, (text, _) in enumerate(prepared):
@@ -189,28 +226,45 @@ class NgnnGeneralEncoder:
             vector = vectors[_text_hash(text)]
             row = np.asarray(vector, dtype=np.float64)
             if row.ndim != 1 or row.shape[0] != INPUT_DIM:
-                raise NgnnGeneralEncoderError("Base embedding provider vector has the wrong dimension")
+                raise NgnnGeneralEncoderError(
+                    "Base embedding provider vector has the wrong dimension"
+                )
             if not np.isfinite(row).all():
-                raise NgnnGeneralEncoderError("Base embedding provider vector must contain only finite values")
+                raise NgnnGeneralEncoderError(
+                    "Base embedding provider vector must contain only finite values"
+                )
             # Preserve the original Python-float sum and explicit float32 rounding.
             norm = math.sqrt(sum(value * value for value in vector))
             if not math.isfinite(norm) or norm == 0.0:
-                raise NgnnGeneralEncoderError("Base embedding provider vector norm must be finite and non-zero")
-            rows.append([struct.unpack("!f", struct.pack("!f", value / norm))[0] for value in vector])
+                raise NgnnGeneralEncoderError(
+                    "Base embedding provider vector norm must be finite and non-zero"
+                )
+            rows.append(
+                [
+                    struct.unpack("!f", struct.pack("!f", value / norm))[0]
+                    for value in vector
+                ]
+            )
             positions.append(position)
         try:
-            output[positions] = self.artifact.transform(np.asarray(rows, dtype=np.float32))
+            output[positions] = self.artifact.transform(
+                np.asarray(rows, dtype=np.float32)
+            )
         except Exception:
             raise NgnnGeneralEncoderError("Frozen artifact transform failed") from None
         return output
 
-    def similarity(self, embeddings1: object, embeddings2: object) -> np.ndarray:
+    @staticmethod
+    def similarity(embeddings1: object, embeddings2: object) -> np.ndarray:
         return _similarity_rows(embeddings1) @ _similarity_rows(embeddings2).T
 
-    def similarity_pairwise(self, embeddings1: object, embeddings2: object) -> np.ndarray:
+    @staticmethod
+    def similarity_pairwise(embeddings1: object, embeddings2: object) -> np.ndarray:
         left, right = _similarity_rows(embeddings1), _similarity_rows(embeddings2)
         if left.shape[0] != right.shape[0]:
-            raise NgnnGeneralEncoderError("Pairwise similarity inputs must contain the same number of rows")
+            raise NgnnGeneralEncoderError(
+                "Pairwise similarity inputs must contain the same number of rows"
+            )
         return np.sum(left * right, axis=1)
 
 
@@ -221,7 +275,8 @@ def _text_hash(text: str) -> str:
 def _prepare_texts(texts: list[str]) -> list[tuple[str | None, int]]:
     tokenizer = None
     prepared = []
-    for text in texts:
+    for original_text in texts:
+        text = original_text
         if not text.strip():
             prepared.append((None, 0))
             continue
@@ -244,7 +299,9 @@ def _prepare_texts(texts: list[str]) -> list[tuple[str | None, int]]:
     return prepared
 
 
-def _request_batches(prepared: list[tuple[str | None, int]], batch_size: int) -> Iterable[list[str]]:
+def _request_batches(
+    prepared: list[tuple[str | None, int]], batch_size: int
+) -> Iterable[list[str]]:
     batch = []
     token_count = 0
     limit = min(batch_size, MAX_REQUEST_INPUTS)
@@ -279,11 +336,13 @@ def _extract_texts(inputs: Iterable[Any] | Mapping[str, Any] | str) -> list[str]
         elif isinstance(item, Mapping) and "text" in item:
             texts.extend(_text_values(item["text"]))
         else:
-            raise NgnnGeneralEncoderError("Text inputs must contain strings or batches with a text field")
+            raise NgnnGeneralEncoderError(
+                "Text inputs must contain strings or batches with a text field"
+            )
     return texts
 
 
-def _text_values(value: Any) -> list[str]:
+def _text_values(value: object) -> list[str]:
     if isinstance(value, str):
         return [value]
     try:
@@ -299,12 +358,18 @@ def _similarity_rows(value: object) -> np.ndarray:
     try:
         rows = np.asarray(value, dtype=np.float64)
     except (TypeError, ValueError, OverflowError):
-        raise NgnnGeneralEncoderError("Similarity inputs must be numeric arrays") from None
+        raise NgnnGeneralEncoderError(
+            "Similarity inputs must be numeric arrays"
+        ) from None
     if rows.ndim == 1:
         rows = rows.reshape(1, -1)
     if rows.ndim != 2 or rows.shape[1] != OUTPUT_DIM:
-        raise NgnnGeneralEncoderError(f"Similarity inputs must have shape (rows, {OUTPUT_DIM})")
+        raise NgnnGeneralEncoderError(
+            f"Similarity inputs must have shape (rows, {OUTPUT_DIM})"
+        )
     if not np.isfinite(rows).all():
-        raise NgnnGeneralEncoderError("Similarity inputs must contain only finite values")
+        raise NgnnGeneralEncoderError(
+            "Similarity inputs must contain only finite values"
+        )
     norms = np.linalg.norm(rows, axis=1, keepdims=True)
     return rows / np.where(norms == 0.0, 1.0, norms)
