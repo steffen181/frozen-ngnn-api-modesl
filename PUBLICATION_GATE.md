@@ -1,5 +1,11 @@
 # Publication gate
 
+**2026-09-06 update:** Publication of the exact audited compressor weights and
+standalone general encoder is authorized. See [GENERAL_ENCODER.md](GENERAL_ENCODER.md)
+for the separate identity and pending fresh evaluation. The historical
+cache-only candidate below remains unchanged; its restrictions do not prohibit
+the explicitly released `model.npz` artifact.
+
 As of 2026-09-05, the frozen candidate remains a documented local study.
 Its cache-only input restriction prevents the normal MTEB model-integration
 path. Operational gateway work alone cannot resolve that restriction.

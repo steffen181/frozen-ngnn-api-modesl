@@ -1,5 +1,9 @@
 # Security and reviewer access
 
+The gateway sections below describe the historical cache-only study. The
+[general encoder](GENERAL_ENCODER.md) runs locally with the caller's OpenAI
+client; it does not require a hosted NGNN service or reviewer credential.
+
 ## Serving boundary
 
 The Python model service remains loopback-only. A separate TLS gateway is the
@@ -25,4 +29,6 @@ authorization headers, request or response bodies, input texts, embeddings,
 query parameters, source IP addresses, or local artifact/cache locations.
 
 The public repository must not include credentials, private endpoint URLs,
-local paths, runtime cache material, model artifacts, or raw evaluation data.
+local paths, runtime cache material or raw evaluation data. The audited
+`model.npz` compressor is explicitly released under MIT; its hash and exact
+scope are listed in [artifact_manifest.json](artifact_manifest.json).

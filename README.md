@@ -1,9 +1,17 @@
 # Frozen NGNN API Model
 
+**2026-09-06:** The compressor weights are now public as [`model.npz`](model.npz),
+with an [integrity manifest](artifact_manifest.json). The independently usable
+general encoder and its MTEB integration are being prepared under
+`steffen-negabo/ngnn-general-encoder-v1`. See [GENERAL_ENCODER.md](GENERAL_ENCODER.md)
+for its distinct revision, input rules and evaluation status.
+
+## Historical frozen study
+
 `steffen-negabo/ngnn-sparse-v1-api` is a frozen, cache-only study service for
-three text-embedding tasks. This repository publishes model
-information and the API contract; it does not publish model weights, runtime
-caches, evaluation texts, embeddings, or access credentials. Its canonical
+three text-embedding tasks. The historical study publishes model
+information and the API contract. Runtime caches, evaluation texts, embeddings
+and access credentials remain private. Its canonical
 public model report is this repository:
 <https://github.com/steffen181/frozen-ngnn-api-modesl>.
 
@@ -73,5 +81,6 @@ encoder requires a separate identity and new evaluation; the scores above
 cannot be transferred to it.
 
 See [PUBLICATION_GATE.md](PUBLICATION_GATE.md). Do not add credentials, local
-paths, cached vectors, model artifacts, raw evaluation data, or evaluation
-request/response bodies.
+paths, cached vectors, unreleased artifacts, raw evaluation data, or evaluation
+request/response bodies. The explicitly released general-encoder weights are
+documented separately above.

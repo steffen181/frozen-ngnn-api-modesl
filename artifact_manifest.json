@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "path": "model.npz",
+  "sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+  "size_bytes": 5843713,
+  "tensor_bytes": 6293504,
+  "input_dimension": 3072,
+  "output_dimension": 512,
+  "license": "MIT",
+  "contains_evaluation_texts": false,
+  "contains_runtime_embedding_cache": false,
+  "contains_credentials": false
+}
