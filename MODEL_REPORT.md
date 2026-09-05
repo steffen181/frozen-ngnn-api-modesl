@@ -54,6 +54,36 @@ These values are local evidence for the exact three-task scope. They are not a
 claim of an MTEB(eng, v2) aggregate and are not an official MTEB result until
 the upstream model and result review process accepts them.
 
+## Matched controls measured on 2026-09-05
+
+A new cache-only run used the same task fixtures and MTEB 2.16 scoring
+protocols for raw 3072D embeddings, PCA at 512D, and the frozen 512D NGNN
+release. PCA used the same 8,000 FineWeb training rows as the compressor;
+2,000 validation rows and all evaluation task rows were excluded from fitting.
+The NGNN path preserved the historical request segmentation and 32-text
+batches, reproducing all three recorded frozen scores.
+
+| Task | Raw 3072D | PCA 512D | Frozen NGNN 512D |
+| --- | ---: | ---: | ---: |
+| SciFact nDCG@10 | 0.777120 | 0.766150 | 0.750530 |
+| STSBenchmark cosine Spearman | 0.835725 | 0.839986 | 0.848071 |
+| Banking77Classification.v2 accuracy | 0.858257 | 0.843791 | 0.784395 |
+
+NGNN exceeds both controls on STS and falls below both on SciFact and Banking77.
+Paired 95% percentile bootstrap intervals for NGNN minus PCA were
+[-0.031875, -0.002342], [0.003031, 0.013004], and [-0.063431, -0.054321],
+respectively (1,000 resamples, seed 20260905). SciFact resamples queries,
+STS resamples sentence pairs and recomputes Spearman, and Banking resamples
+the ten deterministic few-shot fit outcomes on the fixed test set. The Banking
+interval does not estimate uncertainty over new test examples.
+
+Both 512D variants use 2,048 float32 bytes per vector, compared with 12,288
+for raw embeddings. This excludes model artifacts and cache serialization.
+These results support a task-dependent compression tradeoff, not a general
+quality advantage for NGNN. Native provider-512D controls and the additional
+NFCorpus retrieval evaluation are prepared but remain unevaluated because
+their vector caches are missing. No provider calls were made by this comparison.
+
 ## Limitations
 
 - Only the documented frozen revision is in scope.
