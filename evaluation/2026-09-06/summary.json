@@ -3,8 +3,16 @@
   "revision": "ngnn_general_encoder_singleton_e55ba679_20260906",
   "mteb_version": "2.20.10",
   "mteb_source_revision": "ed47a25455157433b458db2625e72960468597ab",
-  "base_embeddings": "original archived OpenAI responses, verified against immutable normalized release values",
-  "new_provider_calls": 0,
+  "embedding_provenance": {
+    "full3072": "15658 verified archived raw responses plus 3914 newly requested NFCorpus vectors",
+    "native512": "19572 newly requested responses with explicit dimensions=512",
+    "provider_alias": "text-embedding-3-large",
+    "provider_alias_immutable_snapshot": false,
+    "comparison_limitation": "Archived full3072 and fresh native512 responses were obtained at different times; the provider alias is externally managed."
+  },
+  "successful_preparation_requests": 236,
+  "successful_live_verification_requests": 87,
+  "failed_or_ambiguous_preparation_attempts": 1,
   "tasks": [
     {
       "variant": "general",
@@ -20,12 +28,12 @@
         "dimension": 3072,
         "namespace": "openai-full-raw",
         "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
-        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
       },
       "files": [
         {
           "path": "evaluation/2026-09-06/general/SciFact.json",
-          "sha256": "3cb060d68d401d37ee650f09d8b44473b68051417e23fbc41056aee51ccdf239"
+          "sha256": "2ab8a244217a64e4ef2d83f3fafa038639a84583622e3794de34a62056b98b54"
         },
         {
           "path": "evaluation/2026-09-06/general/model_meta.json",
@@ -47,12 +55,12 @@
         "dimension": 3072,
         "namespace": "openai-full-raw",
         "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
-        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
       },
       "files": [
         {
           "path": "evaluation/2026-09-06/general/STSBenchmark.json",
-          "sha256": "fcc698f819c0664dd330b04aa5f30f7826251731339d85b0e4331c5c1b652e75"
+          "sha256": "c1fe167ff0abf35092212a04eb0e54a4423b98d29d54d5ab12c09cef9614320d"
         },
         {
           "path": "evaluation/2026-09-06/general/model_meta.json",
@@ -74,12 +82,39 @@
         "dimension": 3072,
         "namespace": "openai-full-raw",
         "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
-        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
       },
       "files": [
         {
           "path": "evaluation/2026-09-06/general/Banking77Classification.v2.json",
-          "sha256": "54499432cfaf6ad0b3fef019e7da8f612342acd9a81af61765ef71ac7d9a6561"
+          "sha256": "f8fb597fa3be9ab6bbb7eef68d24ff28779f8c0ce32e4259bafd133710aeaf2c"
+        },
+        {
+          "path": "evaluation/2026-09-06/general/model_meta.json",
+          "sha256": "ba3bd961e0db6302a44e04ae2d6a688b3c60eaef3972f1621f88410f1b993519"
+        }
+      ]
+    },
+    {
+      "variant": "general",
+      "task_name": "NFCorpus",
+      "main_scores": [
+        0.31192
+      ],
+      "dataset_path": "mteb/nfcorpus",
+      "dataset_revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814",
+      "ordered_text_hashes_sha256": "fa0575cbfb4532759f9461d0afa6f3127ad02fbd165ee2e3b591ac15ec6d7e76",
+      "model_sources": {
+        "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "registration_sha256": "eb25cd5ebae5e1b7f7199db06ec88e575bdde1ea7e970266062ab5b8737ddd6f",
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/general/NFCorpus.json",
+          "sha256": "6cd8c69e9c4fec52b61b41ac0f2baa0ee764b50c5d88834377a5b69e9e489a10"
         },
         {
           "path": "evaluation/2026-09-06/general/model_meta.json",
@@ -99,12 +134,12 @@
       "model_sources": {
         "dimension": 3072,
         "namespace": "openai-full-raw",
-        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
       },
       "files": [
         {
           "path": "evaluation/2026-09-06/raw3072/SciFact.json",
-          "sha256": "f7b2ac449bd066f620e25b1da3095f75f01fc0da13aefd709e378ac398f420db"
+          "sha256": "3957ee034d9f4a206d67ab9c9f9b09410089b1f722275dfff1bb1eaa8797a7b3"
         },
         {
           "path": "evaluation/2026-09-06/raw3072/model_meta.json",
@@ -124,12 +159,12 @@
       "model_sources": {
         "dimension": 3072,
         "namespace": "openai-full-raw",
-        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
       },
       "files": [
         {
           "path": "evaluation/2026-09-06/raw3072/STSBenchmark.json",
-          "sha256": "692924c4fd06c5a925f626034fe0a7ef6e54dd2ec9367d79ee1048bf76b1526e"
+          "sha256": "74e679b43ce76142d1e94fda42166001d38048a0067610e3ec72630c9c8d9226"
         },
         {
           "path": "evaluation/2026-09-06/raw3072/model_meta.json",
@@ -149,16 +184,141 @@
       "model_sources": {
         "dimension": 3072,
         "namespace": "openai-full-raw",
-        "vectors_sha256": "52617e1aff6b988a665634f8aa84eb2412a2658ff8816b18e47020188cb70b30"
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
       },
       "files": [
         {
           "path": "evaluation/2026-09-06/raw3072/Banking77Classification.v2.json",
-          "sha256": "d64324c0798036a6ba62006c20d63210ef80fbac575119c8b2ce401891a0a36f"
+          "sha256": "3883ca0114f2ee68641a509d0fefa79ddb1de4704a76b31399a1b349c088b50f"
         },
         {
           "path": "evaluation/2026-09-06/raw3072/model_meta.json",
           "sha256": "73557d1803b2d37c908dad7694073ef2ed0feccf8c5f4127e1b3dae7c1dda2bf"
+        }
+      ]
+    },
+    {
+      "variant": "raw3072",
+      "task_name": "NFCorpus",
+      "main_scores": [
+        0.42109
+      ],
+      "dataset_path": "mteb/nfcorpus",
+      "dataset_revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814",
+      "ordered_text_hashes_sha256": "fa0575cbfb4532759f9461d0afa6f3127ad02fbd165ee2e3b591ac15ec6d7e76",
+      "model_sources": {
+        "dimension": 3072,
+        "namespace": "openai-full-raw",
+        "vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/raw3072/NFCorpus.json",
+          "sha256": "a3310aceb59b4698b034360d37f48e8f7e4820f54705839e9ca4fabd121a9d44"
+        },
+        {
+          "path": "evaluation/2026-09-06/raw3072/model_meta.json",
+          "sha256": "73557d1803b2d37c908dad7694073ef2ed0feccf8c5f4127e1b3dae7c1dda2bf"
+        }
+      ]
+    },
+    {
+      "variant": "native512",
+      "task_name": "SciFact",
+      "main_scores": [
+        0.75004
+      ],
+      "dataset_path": "mteb/scifact",
+      "dataset_revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9",
+      "ordered_text_hashes_sha256": "c3339c34109dc81f6a81bb30a17ba5dfb201ca5c154c0f82c30e7bb191c64d91",
+      "model_sources": {
+        "dimension": 512,
+        "namespace": "openai-native-512-raw",
+        "vectors_sha256": "200b0043805ebe5e3201427aee42c01293fc60c586c2503f341b87f0903a9d2a"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/native512/SciFact.json",
+          "sha256": "b5736ce35150806f4c799d805abbb701fa199e23a2c432d81065569246aa0dd6"
+        },
+        {
+          "path": "evaluation/2026-09-06/native512/model_meta.json",
+          "sha256": "a2bbf4d5cba41d100467d9b9189b804508b2e862cb30665552e0c3eddb048927"
+        }
+      ]
+    },
+    {
+      "variant": "native512",
+      "task_name": "STSBenchmark",
+      "main_scores": [
+        0.828178
+      ],
+      "dataset_path": "mteb/stsbenchmark-sts",
+      "dataset_revision": "b0fddb56ed78048fa8b90373c8a3cfc37b684831",
+      "ordered_text_hashes_sha256": "7ce80cdd16956833c72c912ff90907940396512033b6ee234d8851a65028c1bd",
+      "model_sources": {
+        "dimension": 512,
+        "namespace": "openai-native-512-raw",
+        "vectors_sha256": "200b0043805ebe5e3201427aee42c01293fc60c586c2503f341b87f0903a9d2a"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/native512/STSBenchmark.json",
+          "sha256": "eefe2dd2f863b5cc4756c8430c6a822e614b3fda9d710717e2062c88525ea02c"
+        },
+        {
+          "path": "evaluation/2026-09-06/native512/model_meta.json",
+          "sha256": "a2bbf4d5cba41d100467d9b9189b804508b2e862cb30665552e0c3eddb048927"
+        }
+      ]
+    },
+    {
+      "variant": "native512",
+      "task_name": "Banking77Classification.v2",
+      "main_scores": [
+        0.845579
+      ],
+      "dataset_path": "mteb/banking77",
+      "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+      "ordered_text_hashes_sha256": "4e90fcc1830a95785f6558db3ff08bd1e9b89f09f5c089a8b5d1589c066cd9da",
+      "model_sources": {
+        "dimension": 512,
+        "namespace": "openai-native-512-raw",
+        "vectors_sha256": "200b0043805ebe5e3201427aee42c01293fc60c586c2503f341b87f0903a9d2a"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/native512/Banking77Classification.v2.json",
+          "sha256": "8284dae0a9630cb765b2f906024c61eab7861b9fd2a9e642fe03235c59dd1567"
+        },
+        {
+          "path": "evaluation/2026-09-06/native512/model_meta.json",
+          "sha256": "a2bbf4d5cba41d100467d9b9189b804508b2e862cb30665552e0c3eddb048927"
+        }
+      ]
+    },
+    {
+      "variant": "native512",
+      "task_name": "NFCorpus",
+      "main_scores": [
+        0.3981
+      ],
+      "dataset_path": "mteb/nfcorpus",
+      "dataset_revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814",
+      "ordered_text_hashes_sha256": "fa0575cbfb4532759f9461d0afa6f3127ad02fbd165ee2e3b591ac15ec6d7e76",
+      "model_sources": {
+        "dimension": 512,
+        "namespace": "openai-native-512-raw",
+        "vectors_sha256": "200b0043805ebe5e3201427aee42c01293fc60c586c2503f341b87f0903a9d2a"
+      },
+      "files": [
+        {
+          "path": "evaluation/2026-09-06/native512/NFCorpus.json",
+          "sha256": "79f5ee52b4c3fbafc42f8ffdc16389466cdc9a01aaceca593337d6d5ce9b0ea8"
+        },
+        {
+          "path": "evaluation/2026-09-06/native512/model_meta.json",
+          "sha256": "a2bbf4d5cba41d100467d9b9189b804508b2e862cb30665552e0c3eddb048927"
         }
       ]
     }

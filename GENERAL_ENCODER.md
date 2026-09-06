@@ -90,38 +90,49 @@ using the same conservative 8,191-token input limit as MTEB's OpenAI model.
 
 ## Evaluation and submission
 
-Publication does not constitute an accepted MTEB entry. Fresh evaluation
-completed with MTEB 2.20.10, upstream commit
-`ed47a25455157433b458db2625e72960468597ab`, on SciFact, original STSBenchmark
-and Banking77Classification.v2. Original STS is superseded by STSBenchmark.v2
-upstream; these results retain their actual task identity.
+Publication does not constitute an accepted MTEB entry. Fresh native
+evaluation completed with MTEB 2.20.10, upstream commit
+`ed47a25455157433b458db2625e72960468597ab`, on all four planned tasks.
+Original STSBenchmark retains its actual identity even though upstream now
+supersedes it with STSBenchmark.v2.
 
-| Task / main metric | General NGNN 512D | Matched raw 3072D |
-| --- | ---: | ---: |
-| SciFact / nDCG@10 | 0.635170 | 0.777120 |
-| STSBenchmark / cosine Spearman | 0.824895 | 0.835725 |
-| Banking77Classification.v2 / accuracy | 0.832575 | 0.858257 |
+| Task / main metric | General NGNN 512D | Raw 3072D | Provider-native 512D |
+| --- | ---: | ---: | ---: |
+| SciFact / nDCG@10 | 0.635170 | 0.777120 | 0.750040 |
+| STSBenchmark / cosine Spearman | 0.824895 | 0.835725 | 0.828178 |
+| Banking77Classification.v2 / accuracy | 0.832575 | 0.858257 | 0.845579 |
+| NFCorpus / nDCG@10 | 0.311920 | 0.421090 | 0.398100 |
 
-NGNN falls below raw on all three tasks while using one sixth of the float32
-vector bytes. Native MTEB evaluators produced new TaskResults from verified
-original archived OpenAI responses; no provider calls were needed for this
-evaluation. Every imported raw vector was checked by reproducing its original
-L2-normalized value against the immutable release archive. The public
-[result manifest and exact TaskResults](evaluation/2026-09-06/summary.json)
-record task/data revisions, source hashes and file hashes. No global aggregate
-or quality advantage is claimed.
+NGNN falls below both controls on all four tasks. Both 512D variants use
+2,048 float32 bytes per vector; raw 3072D uses 12,288 bytes. These results do
+not demonstrate a NGNN advantage over the provider's native dimensionality
+reduction. No global MTEB aggregate is claimed.
 
-NFCorpus and provider-native 512D controls remain pending their missing API
-vectors. The four-task request plan has 236 requests and 4,254,510 input tokens,
-estimated at USD 0.55308630 using the current
-[USD 0.13 per million token price](https://developers.openai.com/api/docs/models/text-embedding-3-large).
-Those requests have not been made.
+The full3072 cache combines 15,658 verified archived raw responses with 3,914
+new NFCorpus vectors. Every archived raw vector was verified by reproducing
+its original L2-normalized value against the immutable release archive. The
+native512 control uses 19,572 new responses with explicit `dimensions=512`.
+All comparisons use the same task inputs and current native evaluators.
+Archived full3072 and fresh native512 responses were obtained at different
+times; the externally managed provider alias is not an immutable snapshot.
 
-Current native `mteb.get_model` / `get_model_meta` registration was verified.
-All 28 compatible text mock tasks passed with synthetic provider embeddings;
-see the complete [offline mock report](verification/offline_mock_run.md).
-That report verifies interfaces, not embedding quality or live API access.
-The actual API smoke test and real-provider mock run are still pending.
+The [manifest and exact TaskResults](evaluation/2026-09-06/summary.json)
+record all task/data revisions, source hashes and file hashes. Preparation
+completed in 236 successful requests after one interruption; completed batches
+were reused on resumption. Reported token usage gives USD 0.55328182 including
+live verification. Conservatively reserving the ambiguous failed attempt gives
+USD 0.55727399, below the USD 0.60 budget. These are calculations from token
+usage at the [USD 0.13 per million token price](https://developers.openai.com/api/docs/models/text-embedding-3-large),
+not an account invoice. See [preparation evidence](evaluation/2026-09-06/provider_preparation.json).
+
+Native `mteb.get_model` / `get_model_meta` registration, the real OpenAI smoke
+test and all 28 compatible text mock tasks passed. The smoke checks unseen
+text, finite 512D output and blank handling. See the complete
+[live mock report](verification/live_mock_run.md) and
+[machine-readable verification](verification/live_mock_run.json). The earlier
+[offline interface report](verification/offline_mock_run.md) is retained.
+The implementation and result PR files are ready; upstream submission still
+requires a writable MTEB fork or authenticated GitHub CLI.
 
 The historical [frozen study report](MODEL_REPORT.md) evaluates a different,
 batch-dependent cache-only model. Its scores do not describe this general

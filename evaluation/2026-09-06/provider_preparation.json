@@ -1,0 +1,22 @@
+{
+  "status": "provider_preparation_complete",
+  "plan_sha256": "dfeac6a656384694dc3b15ecdf9c83ca54c9d64b56639c1afb22b0934b4aca2c",
+  "unique_texts_per_variant": 19572,
+  "full3072_vectors": 19572,
+  "native512_vectors": 19572,
+  "successful_preparation_requests": 236,
+  "failed_or_ambiguous_preparation_attempts": 1,
+  "provider_reported_input_tokens": 4254510,
+  "cost_from_reported_tokens_usd": "0.5530863",
+  "reserved_preparation_cost_usd": "0.55707847",
+  "live_verification_requests": 87,
+  "live_verification_tokens": 1504,
+  "live_verification_cost_usd": "0.00019552",
+  "total_known_cost_usd": "0.55328182",
+  "total_reserved_cost_usd": "0.55727399",
+  "max_total_usd": "0.60",
+  "namespace_sha256": {
+    "openai-full-raw": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb",
+    "openai-native-512-raw": "200b0043805ebe5e3201427aee42c01293fc60c586c2503f341b87f0903a9d2a"
+  }
+}

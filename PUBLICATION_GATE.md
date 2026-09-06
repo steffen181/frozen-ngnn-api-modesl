@@ -2,7 +2,8 @@
 
 **2026-09-06 update:** Publication of the exact audited compressor weights and
 standalone general encoder is authorized. See [GENERAL_ENCODER.md](GENERAL_ENCODER.md)
-for the separate identity and pending fresh evaluation. The historical
+for the separate identity, completed four-task evaluation and successful
+real-provider mock verification. Official PR creation still awaits GitHub fork access. The historical
 cache-only candidate below remains unchanged; its restrictions do not prohibit
 the explicitly released `model.npz` artifact.
 
