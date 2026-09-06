@@ -1,7 +1,14 @@
 # NGNN general encoder
 
 Model: `steffen-negabo/ngnn-general-encoder-v1`  
-Revision: `ngnn_general_encoder_singleton_e55ba679_20260906`
+Submission revision: `d6969c26400944d4f5200ebddfdc04a083fd7b75`
+
+This is the immutable public source commit. The evaluation label
+`ngnn_general_encoder_singleton_e55ba679_20260906` was renamed to satisfy the
+official results revision format. Only the registration constant and saved
+ModelMeta revision changed: inference code, weights and all four TaskResult
+files are unchanged. [Source comparison and hash mapping](verification/revision_alias.json)
+preserve the connection to the original evaluation evidence.
 
 The general encoder uses the caller's OpenAI `text-embedding-3-large` API
 access to produce 3072-dimensional base embeddings, normalizes each vector,
@@ -63,7 +70,7 @@ import mteb
 
 model = mteb.get_model(
     "steffen-negabo/ngnn-general-encoder-v1",
-    revision="ngnn_general_encoder_singleton_e55ba679_20260906",
+    revision="d6969c26400944d4f5200ebddfdc04a083fd7b75",
     device="cpu",
 )
 ```
@@ -131,8 +138,14 @@ text, finite 512D output and blank handling. See the complete
 [live mock report](verification/live_mock_run.md) and
 [machine-readable verification](verification/live_mock_run.json). The earlier
 [offline interface report](verification/offline_mock_run.md) is retained.
-The implementation and result PR files are ready; upstream submission still
-requires a writable MTEB fork or authenticated GitHub CLI.
+The [model implementation PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400) and
+[four-task results PR #702](https://github.com/embeddings-benchmark/results/pull/702) are open for review.
+The results PR depends on the model implementation. Its initial comparison
+workflow reports that the model is not yet in the upstream registry. Model
+workflows require maintainer approval to run. Neither PR is merged.
+After the revision rename, native registration and all 28 offline mock tasks
+passed again; see [current interface verification](verification/submission_revision/offline_mock_run.json).
+The live report retains the actual earlier evaluation label.
 
 The historical [frozen study report](MODEL_REPORT.md) evaluates a different,
 batch-dependent cache-only model. Its scores do not describe this general
@@ -144,4 +157,4 @@ metadata must not claim an empty training-dataset set or a fully open model.
 The earlier private prototype revision ending in `20260905` uses the same
 singleton mathematical transform. This public revision separately specifies
 blank handling, truncation and request limits. New results belong to the
-revision ending in `20260906`.
+evaluation label ending in `20260906`, now mapped to the public source commit above.

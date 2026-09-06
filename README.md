@@ -7,7 +7,9 @@ the caller's OpenAI API access and accepts previously unseen text as
 for setup, its distinct revision and evaluation status. Its MTEB integration
 passed all 28 compatible mock tasks with the real OpenAI provider. Fresh
 results for four tasks and both raw3072/native512 controls are documented in
-the general encoder report. Official MTEB acceptance remains pending.
+the general encoder report. [Model PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400) and
+[results PR #702](https://github.com/embeddings-benchmark/results/pull/702) are open for review.
+Official MTEB acceptance remains pending.
 
 ## Historical frozen study
 

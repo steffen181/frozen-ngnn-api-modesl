@@ -21,5 +21,9 @@
   "live_mock_tasks_passed": 28,
   "live_mock_tasks_failed": 0,
   "provider_preparation_attempts": 237,
-  "completed_benchmark_task_results": 12
+  "completed_benchmark_task_results": 12,
+  "source_files_scope": "Original real-provider evaluation, before metadata-only revision rename",
+  "submission_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
+  "submission_revision_mapping": "revision_alias.json",
+  "submission_offline_verification": "submission_revision/offline_mock_run.json"
 }

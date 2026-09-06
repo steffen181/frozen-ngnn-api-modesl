@@ -3,14 +3,16 @@
 **2026-09-06 update:** Publication of the exact audited compressor weights and
 standalone general encoder is authorized. See [GENERAL_ENCODER.md](GENERAL_ENCODER.md)
 for the separate identity, completed four-task evaluation and successful
-real-provider mock verification. Official PR creation still awaits GitHub fork access. The historical
+real-provider mock verification. [Model PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400)
+and [results PR #702](https://github.com/embeddings-benchmark/results/pull/702) are submitted and await
+maintainer review. The historical
 cache-only candidate below remains unchanged; its restrictions do not prohibit
 the explicitly released `model.npz` artifact.
 
 As of 2026-09-05, the frozen candidate remains a documented local study.
 Its cache-only input restriction prevents the normal MTEB model-integration
 path. Operational gateway work alone cannot resolve that restriction.
-No upstream model or results PR has been submitted.
+No upstream model or results PR submits that historical cache-only candidate.
 
 - [x] The publication license is MIT; see [LICENSE](LICENSE). The FineWeb
   calibration-source license is not automatically the model/API license.

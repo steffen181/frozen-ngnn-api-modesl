@@ -1,0 +1,216 @@
+{
+  "checked_at_utc": "2026-09-06T08:43:24.590847+00:00",
+  "model_name": "steffen-negabo/ngnn-general-encoder-v1",
+  "submission_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
+  "pull_requests": {
+    "model": {
+      "upstream": "embeddings-benchmark/mteb",
+      "fork": "steffen181/mteb",
+      "base": "ed47a25455157433b458db2625e72960468597ab",
+      "branch": "add-ngnn-general-encoder-v1",
+      "commit": "1ff2d1791c7498d1f9a81485a1e7f487d508b7ba",
+      "tree": "8aa9b2b5fec6f77715f69ce9810571729663a85c",
+      "files": [
+        {
+          "target": "mteb/models/model_implementations/ngnn.py",
+          "sha256": "51d924279ac969cf082f89734af53b67980845a11339f6fcb762c1edc0d7e5ed"
+        },
+        {
+          "target": "mteb_mock_run_results.md",
+          "sha256": "e498fc32b7cc6f22bd99fc949491e904388e99f3dcb126ac9bf9905c31a47a6e"
+        }
+      ],
+      "verified_remote_hashes": 2,
+      "number": 5400,
+      "url": "https://github.com/embeddings-benchmark/mteb/pull/5400",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "mergeable": true,
+      "mergeable_state": "blocked",
+      "check_suites": [
+        {
+          "status": "completed",
+          "conclusion": "action_required"
+        },
+        {
+          "status": "completed",
+          "conclusion": "action_required"
+        },
+        {
+          "status": "completed",
+          "conclusion": "action_required"
+        },
+        {
+          "status": "completed",
+          "conclusion": "action_required"
+        },
+        {
+          "status": "completed",
+          "conclusion": "action_required"
+        },
+        {
+          "status": "completed",
+          "conclusion": "action_required"
+        }
+      ],
+      "checks": [],
+      "workflow_runs": [
+        {
+          "name": "Model Loading",
+          "status": "completed",
+          "conclusion": "action_required",
+          "url": "https://github.com/embeddings-benchmark/mteb/actions/runs/34022472777"
+        },
+        {
+          "name": "Test lowest dependencies",
+          "status": "completed",
+          "conclusion": "action_required",
+          "url": "https://github.com/embeddings-benchmark/mteb/actions/runs/34022472743"
+        },
+        {
+          "name": "Test",
+          "status": "completed",
+          "conclusion": "action_required",
+          "url": "https://github.com/embeddings-benchmark/mteb/actions/runs/34022472762"
+        },
+        {
+          "name": "Typechecking",
+          "status": "completed",
+          "conclusion": "action_required",
+          "url": "https://github.com/embeddings-benchmark/mteb/actions/runs/34022472752"
+        },
+        {
+          "name": "Documentation",
+          "status": "completed",
+          "conclusion": "action_required",
+          "url": "https://github.com/embeddings-benchmark/mteb/actions/runs/34022472741"
+        },
+        {
+          "name": "run-linting",
+          "status": "completed",
+          "conclusion": "action_required",
+          "url": "https://github.com/embeddings-benchmark/mteb/actions/runs/34022472761"
+        }
+      ]
+    },
+    "results": {
+      "upstream": "embeddings-benchmark/results",
+      "fork": "steffen181/results",
+      "base": "5c1d5c56b562f2c691cf60114ddf3c72a0f8ddd1",
+      "branch": "add-ngnn-general-encoder-v1-results",
+      "commit": "dd9174c9d5d28f423d3cbfa5243267be59eab73b",
+      "tree": "0e5feaaaa4cc8370c98c1dfc385c6986cc576317",
+      "files": [
+        {
+          "target": "results/steffen-negabo__ngnn-general-encoder-v1/d6969c26400944d4f5200ebddfdc04a083fd7b75/SciFact.json",
+          "sha256": "2ab8a244217a64e4ef2d83f3fafa038639a84583622e3794de34a62056b98b54"
+        },
+        {
+          "target": "results/steffen-negabo__ngnn-general-encoder-v1/d6969c26400944d4f5200ebddfdc04a083fd7b75/model_meta.json",
+          "sha256": "bd02391586f86dc4e14d518b1a534a91e1b98cfa0b9a6ab0cadf8751caebde35"
+        },
+        {
+          "target": "results/steffen-negabo__ngnn-general-encoder-v1/d6969c26400944d4f5200ebddfdc04a083fd7b75/STSBenchmark.json",
+          "sha256": "c1fe167ff0abf35092212a04eb0e54a4423b98d29d54d5ab12c09cef9614320d"
+        },
+        {
+          "target": "results/steffen-negabo__ngnn-general-encoder-v1/d6969c26400944d4f5200ebddfdc04a083fd7b75/Banking77Classification.v2.json",
+          "sha256": "f8fb597fa3be9ab6bbb7eef68d24ff28779f8c0ce32e4259bafd133710aeaf2c"
+        },
+        {
+          "target": "results/steffen-negabo__ngnn-general-encoder-v1/d6969c26400944d4f5200ebddfdc04a083fd7b75/NFCorpus.json",
+          "sha256": "6cd8c69e9c4fec52b61b41ac0f2baa0ee764b50c5d88834377a5b69e9e489a10"
+        }
+      ],
+      "verified_remote_hashes": 5,
+      "number": 702,
+      "url": "https://github.com/embeddings-benchmark/results/pull/702",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "mergeable": true,
+      "mergeable_state": "blocked",
+      "check_suites": [
+        {
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ],
+      "checks": [
+        {
+          "name": "comment",
+          "status": "completed",
+          "conclusion": "skipped",
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499674/job/101457780914"
+        },
+        {
+          "name": "build",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499674/job/101457512975"
+        },
+        {
+          "name": "test (ubuntu-latest, 3.10)",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499640/job/101457512670"
+        },
+        {
+          "name": "check-file-size",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499625/job/101457512616"
+        }
+      ],
+      "workflow_runs": [
+        {
+          "name": "Check File Sizes",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499625"
+        },
+        {
+          "name": "Test",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499640"
+        },
+        {
+          "name": "Model Results Comparison",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/embeddings-benchmark/results/actions/runs/34022499674"
+        }
+      ]
+    }
+  },
+  "local_result_validation": {
+    "upstream_test_functions_passed": [
+      "test_correct_folder_structure",
+      "test_model_meta_in_folders",
+      "test_revision_is_specified_for_new_additions",
+      "test_organization_is_specified_for_new_additions",
+      "test_that_revision_match",
+      "test_no_duplicate_revisions",
+      "test_task_name_matches_filename"
+    ],
+    "native_task_results_loaded": 4,
+    "selected_files_sha256_verified": 5,
+    "model_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75"
+  },
+  "ci_interpretation": {
+    "model": "Six workflows require maintainer approval (action_required).",
+    "results_comparison": "Fails because the new model is not yet in the upstream MTEB registry; depends on model PR 5400.",
+    "results_file_size": "passed",
+    "results_tests": "in progress at recorded observation"
+  }
+}
