@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ngnn-encoder"
+version = "0.1.0"
+description = "Verified inference for the frozen NGNN general encoder"
+readme = "INFERENCE_PACKAGE.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "steffen181" }]
+dependencies = [
+  "numpy==2.2.6",
+  "torch==2.11.0",
+  "openai==2.43.0",
+  "tiktoken==0.13.0",
+  "huggingface_hub>=1.0,<2",
+]
+
+[tool.setuptools]
+packages = ["ngnn_encoder"]
+py-modules = ["ngnn_general_encoder"]
+include-package-data = false

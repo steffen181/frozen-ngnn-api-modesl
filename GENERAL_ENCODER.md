@@ -40,7 +40,34 @@ The code verifies the artifact SHA-256 before loading tensors or initializing
 the provider. Loading uses NumPy with `allow_pickle=False`. No private
 repository, runtime vector cache or hosted NGNN service is required.
 
-## Run locally
+## Installable inference library
+
+The inference-only `ngnn-encoder` 0.1.0 library is distributed as a wheel
+in the [versioned release](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0):
+
+```bash
+python -m pip install "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/download/v0.1.0/ngnn_encoder-0.1.0-py3-none-any.whl"
+```
+
+The wheel contains inference code and package metadata. Download the
+published [`model.npz`](model.npz) separately, set `OPENAI_API_KEY` locally,
+and load it with:
+
+```python
+from ngnn_encoder import NgnnGeneralEncoder
+
+model = NgnnGeneralEncoder("model.npz")
+vectors = model.encode(["A previously unseen sentence.", "Another sentence."])
+assert vectors.shape == (2, 512)
+```
+
+The package also implements verified Hugging Face loading through
+`from_pretrained(repo_id, revision=hub_commit)`. A Hub commit is a separate
+distribution coordinate; the canonical MTEB revision above stays fixed.
+See [package documentation](INFERENCE_PACKAGE.md). The package wraps the
+unchanged standalone inference core and requires PyTorch 2.11.0.
+
+## Standalone module
 
 Clone this repository, create a Python 3.10 environment, and install
 [`requirements.txt`](requirements.txt). CPU PyTorch is sufficient. Keep

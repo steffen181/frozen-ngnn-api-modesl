@@ -1,5 +1,13 @@
 # Frozen NGNN API Model
 
+**2026-09-09:** The inference-only Python library `ngnn-encoder` 0.1.0 is
+available as a [versioned wheel](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0).
+See [installation and usage](GENERAL_ENCODER.md#installable-inference-library).
+It wraps the unchanged general encoder; compressor weights and benchmark
+results retain their evaluated identities. The package contains inference
+code; fixed weights are distributed separately. The NGNN training algorithm and training
+data are not included.
+
 **2026-09-06:** The general encoder's [source](ngnn_general_encoder.py) and
 [compressor weights](model.npz) are public under MIT. It runs locally using
 the caller's OpenAI API access and accepts previously unseen text as
