@@ -61,9 +61,20 @@ vectors = model.encode(["A previously unseen sentence.", "Another sentence."])
 assert vectors.shape == (2, 512)
 ```
 
-The package also implements verified Hugging Face loading through
-`from_pretrained(repo_id, revision=hub_commit)`. A Hub commit is a separate
-distribution coordinate; the canonical MTEB revision above stays fixed.
+The [public Hugging Face model](https://huggingface.co/steffen-negabo/ngnn-general-encoder-v1)
+can be loaded directly at its immutable artifact commit:
+
+```python
+model = NgnnGeneralEncoder.from_pretrained(
+    "steffen-negabo/ngnn-general-encoder-v1",
+    revision="bab7d30011438e52f22be540067c73ca37f462eb",
+)
+```
+
+The Hub commit is a separate distribution coordinate; the canonical MTEB
+revision above stays fixed. All five model files were anonymously downloaded
+and hash-verified; loading through the installed library reproduced the
+original local artifact's outputs with a synthetic provider.
 See [package documentation](INFERENCE_PACKAGE.md). The package wraps the
 unchanged standalone inference core and requires PyTorch 2.11.0.
 
@@ -87,10 +98,16 @@ its public vocabulary on first use. You can instead pass an OpenAI-compatible
 `client` to the constructor. Never put keys in repository files or MTEB model
 keyword arguments: MTEB saves those arguments in result metadata.
 
-The proposed self-contained MTEB implementation is in
-[`mteb_models/ngnn.py`](mteb_models/ngnn.py). Copy it to
-`mteb/models/model_implementations/ngnn.py` in the pinned MTEB checkout before
-installing that checkout. With `OPENAI_API_KEY` in the environment:
+## MTEB library adapter
+
+The adapter in [`mteb_models/ngnn.py`](mteb_models/ngnn.py) delegates inference
+to the installed library and pins the verified Hub artifact commit above.
+The model implementation remains under review in
+[MTEB PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400).
+
+To use the adapter locally, install the wheel above, copy it to
+`mteb/models/model_implementations/ngnn.py` in the pinned MTEB checkout, and
+install that checkout. With `OPENAI_API_KEY` in the environment:
 
 ```python
 import mteb
@@ -102,10 +119,10 @@ model = mteb.get_model(
 )
 ```
 
-The MTEB loader downloads the weights from immutable public commit
-`83773ff1ad83accc729c8d748d6991077842fbc0` and checks their SHA-256. It requires
-PyTorch 2.11.0 because top-k tie behavior affects this compressor. This model
-is not yet included in an official MTEB release.
+The package checks the artifact SHA-256 and requires PyTorch 2.11.0 because
+top-k tie behavior affects this compressor. Public Hub downloads explicitly
+disable authentication tokens. This model is not yet included in an official
+MTEB release.
 
 ## Input rules
 

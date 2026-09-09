@@ -1,0 +1,44 @@
+{
+  "repository": "steffen-negabo/ngnn-general-encoder-v1",
+  "url": "https://huggingface.co/steffen-negabo/ngnn-general-encoder-v1",
+  "artifact_commit": "bab7d30011438e52f22be540067c73ca37f462eb",
+  "model_card_commit": "3498afcb263d7387ccc49958af5def7644507d9b",
+  "public": true,
+  "upload_complete": true,
+  "anonymous_files_verified": [
+    {
+      "file": "README.md",
+      "sha256": "d4062d177d157219877661f7522d6c04feacac55694f887a1980f091bc163aa1",
+      "size_bytes": 5861
+    },
+    {
+      "file": "config.json",
+      "sha256": "ccc3dfcf342c9d11e4eb0722212030e8ce7cb9fc89541ff62123cfbf7aa05cdc",
+      "size_bytes": 398
+    },
+    {
+      "file": "LICENSE",
+      "sha256": "18a82ff4040ef924cd9ce7095b6527d88f9b91f78252944262ea5ce7f1123f53",
+      "size_bytes": 1067
+    },
+    {
+      "file": "provenance.json",
+      "sha256": "5412eca66639cddd478af193e58032b31513295005ccb8d79e0346a3f07216cd",
+      "size_bytes": 1127
+    },
+    {
+      "file": "model.npz",
+      "sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+      "size_bytes": 5843713
+    }
+  ],
+  "installed_library_hub_loading_verified": true,
+  "bit_exact_with_original_artifact": true,
+  "verification_provider": "synthetic embeddings; no paid API calls",
+  "library_version": "0.1.0",
+  "model_card_sha256": "4f168a348773cf48834e99b6e4502cbd8a59982eef6357ab69593ae9c29c9779",
+  "model_card_anonymous_download_verified": true,
+  "canonical_model_name": "steffen-negabo/ngnn-general-encoder-v1",
+  "canonical_model_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
+  "inference_library_release": "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0"
+}

@@ -1,0 +1,9 @@
+{
+  "distribution": "ngnn-encoder",
+  "version": "0.1.0",
+  "wheel_url": "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/download/v0.1.0/ngnn_encoder-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "1ea29b3717175aacc2b6f1465d456201446a2c4eec835428526807bd6c7833e3",
+  "hf_repo_id": "steffen-negabo/ngnn-general-encoder-v1",
+  "hf_artifact_revision": "bab7d30011438e52f22be540067c73ca37f462eb",
+  "status": "published_and_verified"
+}

@@ -2,6 +2,8 @@
 
 **2026-09-09:** The inference-only Python library `ngnn-encoder` 0.1.0 is
 available as a [versioned wheel](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0).
+The fixed compressor and model card are also public on
+[Hugging Face](https://huggingface.co/steffen-negabo/ngnn-general-encoder-v1).
 See [installation and usage](GENERAL_ENCODER.md#installable-inference-library).
 It wraps the unchanged general encoder; compressor weights and benchmark
 results retain their evaluated identities. The package contains inference
