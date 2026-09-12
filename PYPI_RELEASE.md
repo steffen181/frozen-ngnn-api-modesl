@@ -11,8 +11,10 @@ inputs plus generated packaging metadata. Rebuilding it produces the same
 inference code. Neither archive contains weights, training code or data.
 Weights remain at the pinned public Hugging Face artifact commit.
 
-The source archive will accompany the wheel in the existing
-[v0.1.0 release](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0).
+The [source archive](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/download/v0.1.0/ngnn_encoder-0.1.0.tar.gz)
+now accompanies the wheel in the existing v0.1.0 GitHub release.
+Its anonymous download was verified against SHA-256
+`ac4cc406a4499121baea1454346eef4b51b6866cd3a68ac162de12c7b50b84ff`.
 
 The [prepared MTEB patch](verification/pypi_model.patch) adds
 `ngnn = ["ngnn-encoder==0.1.0"]` to MTEB's optional dependencies and uses

@@ -1,0 +1,12 @@
+{
+  "previous_sha256": "bd02391586f86dc4e14d518b1a534a91e1b98cfa0b9a6ab0cadf8751caebde35",
+  "current_sha256": "508eee8ac7a314445a8f9e60c9cc4043b9d97a94c05c1f859e6f599376eaa569",
+  "changed_fields": {
+    "license": {
+      "before": null,
+      "after": "mit"
+    }
+  },
+  "canonical_revision_unchanged": true,
+  "four_task_results_unchanged": true
+}
