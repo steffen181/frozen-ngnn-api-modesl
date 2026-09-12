@@ -202,3 +202,26 @@ The earlier private prototype revision ending in `20260905` uses the same
 singleton mathematical transform. This public revision separately specifies
 blank handling, truncation and request limits. New results belong to the
 evaluation label ending in `20260906`, now mapped to the public source commit above.
+
+## Metadata and local compressor size
+
+The released NGNN compressor and inference code use the MIT license. The
+complete encoder also calls OpenAI's proprietary `text-embedding-3-large`;
+`open_weights=False` and the API framework designation therefore remain.
+OpenAI API access is subject to the provider's separate terms.
+
+The local dictionary stores 1,572,864 float32 values (3072 by 512), plus
+512 fixed unit channel scales. It has no token embedding layer. This does
+not disclose the total parameters or embedding-layer parameters of the
+complete encoder, which remain unknown because the API base is proprietary.
+
+The persistent local inference tensors occupy 14,682,112 bytes
+(14.001953125 MiB): a float64 dictionary, float64 Cholesky factor and float32
+scales. This excludes the API model, tokenizer/client, temporary buffers and
+process overhead. It is not a whole-model memory figure.
+[Measured local tensor sizes](verification/local_compressor_size.json).
+
+The PyPI distribution and MTEB `ngnn` extra are prepared and tested, but
+PyPI publication is pending publishing access. The existing adapter retains
+the verified GitHub-wheel installation route until the PyPI upload succeeds.
+[Release preparation and next step](PYPI_RELEASE.md).

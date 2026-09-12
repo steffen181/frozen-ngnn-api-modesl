@@ -1,0 +1,161 @@
+diff --git a/mteb/models/model_implementations/ngnn.py b/mteb/models/model_implementations/ngnn.py
+new file mode 100644
+index 0000000..b5f3e49
+--- /dev/null
++++ b/mteb/models/model_implementations/ngnn.py
+@@ -0,0 +1,90 @@
++"""MTEB registration adapter for the separately distributed NGNN encoder."""
++
++from __future__ import annotations
++
++from typing import TYPE_CHECKING, Any
++
++from mteb.models.model_meta import ModelMeta, ScoringFunction
++
++if TYPE_CHECKING:
++    from pathlib import Path
++
++    from mteb.models.models_protocols import EncoderProtocol
++
++MODEL_NAME = "steffen-negabo/ngnn-general-encoder-v1"
++MODEL_REVISION = "d6969c26400944d4f5200ebddfdc04a083fd7b75"
++OUTPUT_DIM = 512
++HF_REPO_ID = "steffen-negabo/ngnn-general-encoder-v1"
++HF_ARTIFACT_REVISION = "bab7d30011438e52f22be540067c73ca37f462eb"
++
++
++def load_ngnn_model(
++    model_name: str = MODEL_NAME,
++    revision: str | None = MODEL_REVISION,
++    *,
++    artifact_path: str | Path | None = None,
++    cache_dir: str | Path | None = None,
++    client: Any | None = None,  # noqa: ANN401 -- accepts OpenAI-compatible clients
++    provider_batch_size: int = 100,
++    device: str | None = None,
++    **kwargs: Any,
++) -> EncoderProtocol:
++    """Load the fixed model through the reviewed ``ngnn-encoder`` package."""
++    if "api_key" in kwargs:
++        raise ValueError("Use OPENAI_API_KEY; MTEB serializes model keyword arguments")
++    if kwargs:
++        raise ValueError("Unsupported NGNN model keyword arguments")
++    if model_name != MODEL_NAME:
++        raise ValueError("Unsupported NGNN model name")
++    if revision not in {None, MODEL_REVISION}:
++        raise ValueError("Unsupported NGNN model revision")
++    if device not in {None, "cpu"}:
++        raise ValueError("This NGNN revision uses CPU inference")
++    from ngnn_encoder import NgnnGeneralEncoder
++
++    if artifact_path is not None:
++        model = NgnnGeneralEncoder(
++            artifact_path,
++            client=client,
++            provider_batch_size=provider_batch_size,
++        )
++    else:
++        model = NgnnGeneralEncoder.from_pretrained(
++            HF_REPO_ID,
++            revision=HF_ARTIFACT_REVISION,
++            cache_dir=cache_dir,
++            client=client,
++            provider_batch_size=provider_batch_size,
++        )
++    model.mteb_model_meta = ngnn_general_encoder.model_copy(deep=True)
++    return model
++
++
++ngnn_general_encoder = ModelMeta(
++    name=MODEL_NAME,
++    revision=MODEL_REVISION,
++    loader=load_ngnn_model,
++    release_date="2026-09-06",
++    languages=["eng-Latn"],
++    # The local dictionary has 1,572,864 values plus 512 fixed unit scales.
++    # Totals include the proprietary OpenAI base and are unknown.
++    n_parameters=None,
++    n_embedding_parameters=None,
++    memory_usage_mb=None,
++    max_tokens=8191,
++    embed_dim=OUTPUT_DIM,
++    license="mit",  # Published compressor/code; OpenAI API terms remain separate.
++    open_weights=False,
++    public_training_code=None,
++    public_training_data=None,
++    framework=["API", "PyTorch"],  # Encoding still requires OpenAI API access.
++    reference="https://github.com/steffen181/frozen-ngnn-api-modesl",
++    similarity_fn_name=ScoringFunction.COSINE,
++    use_instructions=False,
++    training_datasets=None,
++    adapted_from="openai/text-embedding-3-large",
++    modalities=["text"],
++    model_type=["dense"],
++    contacts=["steffen181"],
++    extra_requirements_groups=["ngnn"],
++)
+diff --git a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -105,6 +105,7 @@
+ omniretriever = ["peft>=0.11.0", "transformers>=4.51.0,<4.52.0"]
+ colvec1_1 = ["transformers>=5.14.1,<6.0.0"]
+ openai = ["openai>=1.41.0", "tiktoken>=0.8.0"]
++ngnn = ["ngnn-encoder==0.1.0"]
+ model2vec = ["model2vec>=0.3.0"]
+ pylate = ["pylate>=1.3.1"]
+ msclap = ["msclap>=1.3.4", "soundfile>=0.13.1"]
+diff --git a/mteb_mock_run_results.md b/mteb_mock_run_results.md
+new file mode 100644
+index 0000000..b5af034
+--- /dev/null
++++ b/mteb_mock_run_results.md
+@@ -0,0 +1,47 @@
++**Native MTEB integration with the installed ngnn-encoder 0.1.0 wheel and actual anonymous Hugging Face downloads. Provider embeddings are synthetic; no new paid OpenAI calls or model-quality claim.**
++
++HF artifact commit: `bab7d30011438e52f22be540067c73ca37f462eb`. Canonical MTEB revision remains `d6969c26400944d4f5200ebddfdc04a083fd7b75`.
++
++The previous [real-provider verification](https://github.com/steffen181/frozen-ngnn-api-modesl/blob/738ce65556d355b130f79e501bdc80af6bfd9f9c/verification/live_mock_run.md) covers the unchanged inference core and remains available separately.
++
++# MTEB Mock-Run Results for `steffen-negabo/ngnn-general-encoder-v1`
++
++| Task | Modality | Pass | Reason |
++| --- | --- | --- | --- |
++| MockMultilingualBitextMiningTask | text | ✓ | - |
++| MockMultilingualParallelBitextMiningTask | text | ✓ | - |
++| MockMultilingualClassificationTask | text | ✓ | - |
++| MockMultilingualClusteringTask | text | ✓ | - |
++| MockMultilingualClusteringFastTask | text | ✓ | - |
++| MockMultilingualPairClassificationTask | text | ✓ | - |
++| MockMultilingualRerankingTask | text | ✓ | - |
++| MockMultilingualRetrievalTask | text | ✓ | - |
++| MockMultilingualSTSTask | text | ✓ | - |
++| MockMultilingualMultilabelClassification | text | ✓ | - |
++| MockMultilingualSummarizationTask | text | ✓ | - |
++| MockMultilingualInstructionRetrieval | text | ✓ | - |
++| MockMultilingualInstructionReranking | text | ✓ | - |
++| MockBitextMiningTask | text | ✓ | - |
++| MockClassificationTask | text | ✓ | - |
++| MockRegressionTask | text | ✓ | - |
++| MockClusteringTask | text | ✓ | - |
++| LegacyMockClusteringFastTask | text | ✓ | - |
++| MockPairClassificationTask | text | ✓ | - |
++| MockRerankingTask | text | ✓ | - |
++| MockRetrievalTask | text | ✓ | - |
++| MockSTSTask | text | ✓ | - |
++| MockMultilabelClassification | text | ✓ | - |
++| MockSummarizationTask | text | ✓ | - |
++| MockInstructionRetrieval | text | ✓ | - |
++| MockInstructionReranking | text | ✓ | - |
++| MockRetrievalDialogTask | text | ✓ | - |
++| MockTextZeroShotClassification | text | ✓ | - |
++
++## Summary by Modality
++
++| Pass      | Modality | Failures |
++| --------- | -------- | -------- |
++| ✓ (28/28) | text     |  |
++| skipped   | image    |  |
++| skipped   | audio    |  |
++| skipped   | video    |  |
+\ No newline at end of file

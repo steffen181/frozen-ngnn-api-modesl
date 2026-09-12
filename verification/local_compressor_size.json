@@ -1,0 +1,55 @@
+{
+  "scope": "Local compressor only; excludes OpenAI base, tokenizer, provider client, temporary buffers and process overhead",
+  "artifact_arrays": {
+    "dictionary": {
+      "shape": [
+        3072,
+        512
+      ],
+      "stored_values": 1572864,
+      "storage_bytes": 6291456,
+      "dtype": "float32",
+      "all_values_one": false
+    },
+    "code_channel_scale": {
+      "shape": [
+        1,
+        512
+      ],
+      "stored_values": 512,
+      "storage_bytes": 2048,
+      "dtype": "float32",
+      "all_values_one": true
+    }
+  },
+  "runtime_tensors": {
+    "_basis": {
+      "shape": [
+        3072,
+        512
+      ],
+      "dtype": "torch.float64",
+      "bytes": 12582912
+    },
+    "_channel_scale": {
+      "shape": [
+        512,
+        1
+      ],
+      "dtype": "torch.float32",
+      "bytes": 2048
+    },
+    "_cholesky": {
+      "shape": [
+        512,
+        512
+      ],
+      "dtype": "torch.float64",
+      "bytes": 2097152
+    }
+  },
+  "persistent_tensor_bytes": 14682112,
+  "full_encoder_parameters": null,
+  "full_encoder_embedding_parameters": null,
+  "full_encoder_memory_usage_mb": null
+}
