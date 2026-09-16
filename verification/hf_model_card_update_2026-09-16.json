@@ -1,0 +1,12 @@
+{
+  "checked_on": "2026-09-16",
+  "repository": "steffen-negabo/ngnn-general-encoder-v1",
+  "previous_commit": "3498afcb263d7387ccc49958af5def7644507d9b",
+  "model_card_commit": "a10ef0fe4b6954cefeba69c2ac62114e5273095e",
+  "artifact_commit": "bab7d30011438e52f22be540067c73ca37f462eb",
+  "changed_files": [
+    "README.md"
+  ],
+  "public": true,
+  "anonymous_hashes_verified": 5
+}

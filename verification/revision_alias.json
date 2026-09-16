@@ -40,12 +40,14 @@
   ],
   "model_meta": {
     "evaluated_sha256": "ba3bd961e0db6302a44e04ae2d6a688b3c60eaef3972f1621f88410f1b993519",
-    "submission_sha256": "508eee8ac7a314445a8f9e60c9cc4043b9d97a94c05c1f859e6f599376eaa569",
+    "submission_sha256": "18d7c8eeffbeee77593493a2a6104e7e450ce691ef87e40fd983598168221382",
     "changed_fields": [
       "revision",
-      "license"
+      "license",
+      "extra_requirements_groups"
     ],
-    "license_correction_date": "2026-09-12"
+    "license_correction_date": "2026-09-12",
+    "dependency_correction_date": "2026-09-16"
   },
   "live_verification": "The existing real-provider report was run under evaluation_revision; it is preserved without rewriting. No new paid provider call was made for the identifier correction."
 }

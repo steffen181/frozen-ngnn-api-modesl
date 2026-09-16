@@ -1,6 +1,10 @@
 {
-  "checked_on": "2026-09-09",
-  "mode": "public_hub_installed_wheel_synthetic_provider",
+  "checked_on": "2026-09-16",
+  "mode": "mteb_ngnn_extra_public_hub_synthetic_provider",
+  "installation_source": "public PyPI index through the proposed mteb[ngnn] extra",
+  "extra_requirements_groups": [
+    "ngnn"
+  ],
   "mteb_version": "2.20.10",
   "library_version": "0.1.0",
   "model_name": "steffen-negabo/ngnn-general-encoder-v1",
@@ -8,7 +12,7 @@
   "hf_repository": "steffen-negabo/ngnn-general-encoder-v1",
   "hf_artifact_revision": "bab7d30011438e52f22be540067c73ca37f462eb",
   "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
-  "adapter_sha256": "f1ee9caed05f96b104af82f8c9b1c62e86f81fa69303d7256de00aebc5fbd269",
+  "adapter_sha256": "9f83171da77d2ed039d9d09c547dd00a8e0bab68bf8d4fc91b072ad5ad60d2e0",
   "actual_hub_download": true,
   "hub_download_token": false,
   "experiment_kwargs": null,

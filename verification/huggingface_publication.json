@@ -2,14 +2,14 @@
   "repository": "steffen-negabo/ngnn-general-encoder-v1",
   "url": "https://huggingface.co/steffen-negabo/ngnn-general-encoder-v1",
   "artifact_commit": "bab7d30011438e52f22be540067c73ca37f462eb",
-  "model_card_commit": "3498afcb263d7387ccc49958af5def7644507d9b",
+  "model_card_commit": "a10ef0fe4b6954cefeba69c2ac62114e5273095e",
   "public": true,
   "upload_complete": true,
   "anonymous_files_verified": [
     {
       "file": "README.md",
-      "sha256": "d4062d177d157219877661f7522d6c04feacac55694f887a1980f091bc163aa1",
-      "size_bytes": 5861
+      "sha256": "0cc07fcfb3a3682262758a059290e4ec92146b3f7276da1ccc4b100ca38d3b71",
+      "size_bytes": 5712
     },
     {
       "file": "config.json",
@@ -36,9 +36,11 @@
   "bit_exact_with_original_artifact": true,
   "verification_provider": "synthetic embeddings; no paid API calls",
   "library_version": "0.1.0",
-  "model_card_sha256": "4f168a348773cf48834e99b6e4502cbd8a59982eef6357ab69593ae9c29c9779",
+  "model_card_sha256": "0cc07fcfb3a3682262758a059290e4ec92146b3f7276da1ccc4b100ca38d3b71",
   "model_card_anonymous_download_verified": true,
   "canonical_model_name": "steffen-negabo/ngnn-general-encoder-v1",
   "canonical_model_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
-  "inference_library_release": "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0"
+  "inference_library_release": "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0",
+  "model_card_updated_on": "2026-09-16",
+  "inference_library_pypi": "https://pypi.org/project/ngnn-encoder/0.1.0/"
 }

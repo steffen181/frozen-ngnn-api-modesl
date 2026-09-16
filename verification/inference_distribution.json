@@ -1,9 +1,16 @@
 {
   "distribution": "ngnn-encoder",
   "version": "0.1.0",
-  "wheel_url": "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/download/v0.1.0/ngnn_encoder-0.1.0-py3-none-any.whl",
+  "wheel_url": "https://files.pythonhosted.org/packages/aa/68/fcc67671347451967cb74de3850f294b348a5cd6568dd0a72fd10004b175/ngnn_encoder-0.1.0-py3-none-any.whl",
   "wheel_sha256": "1ea29b3717175aacc2b6f1465d456201446a2c4eec835428526807bd6c7833e3",
   "hf_repo_id": "steffen-negabo/ngnn-general-encoder-v1",
   "hf_artifact_revision": "bab7d30011438e52f22be540067c73ca37f462eb",
-  "status": "published_and_verified"
+  "status": "published_and_verified",
+  "github_release_wheel_url": "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/download/v0.1.0/ngnn_encoder-0.1.0-py3-none-any.whl",
+  "pypi_project_url": "https://pypi.org/project/ngnn-encoder/0.1.0/",
+  "install_requirement": "ngnn-encoder==0.1.0",
+  "extra_requirements_groups": [
+    "ngnn"
+  ],
+  "verified_on": "2026-09-16"
 }

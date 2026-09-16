@@ -1,7 +1,8 @@
 # Frozen NGNN API Model
 
-**2026-09-09:** The inference-only Python library `ngnn-encoder` 0.1.0 is
-available as a [versioned wheel](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0).
+**2026-09-16:** The inference-only Python library `ngnn-encoder` 0.1.0 is
+available on [PyPI](https://pypi.org/project/ngnn-encoder/0.1.0/).
+Install with `python -m pip install ngnn-encoder==0.1.0`.
 The fixed compressor and model card are also public on
 [Hugging Face](https://huggingface.co/steffen-negabo/ngnn-general-encoder-v1).
 See [installation and usage](GENERAL_ENCODER.md#installable-inference-library).

@@ -1,8 +1,12 @@
-# PyPI release preparation
+# PyPI release
 
-Status on 2026-09-12: the `ngnn-encoder==0.1.0` wheel and source distribution
-are prepared and pass `twine check --strict`. PyPI upload is pending publishing
-authentication; this page does not claim the package is available on PyPI.
+Published on 2026-09-16: [ngnn-encoder 0.1.0](https://pypi.org/project/ngnn-encoder/0.1.0/).
+The wheel and source distribution pass `twine check --strict`. Both public
+PyPI downloads match the previously reviewed GitHub release archives.
+
+```bash
+python -m pip install ngnn-encoder==0.1.0
+```
 
 The existing wheel is unchanged (SHA-256
 `1ea29b3717175aacc2b6f1465d456201446a2c4eec835428526807bd6c7833e3`).
@@ -16,17 +20,20 @@ now accompanies the wheel in the existing v0.1.0 GitHub release.
 Its anonymous download was verified against SHA-256
 `ac4cc406a4499121baea1454346eef4b51b6866cd3a68ac162de12c7b50b84ff`.
 
-The [prepared MTEB patch](verification/pypi_model.patch) adds
+The [MTEB integration patch](verification/pypi_model.patch) adds
 `ngnn = ["ngnn-encoder==0.1.0"]` to MTEB's optional dependencies and uses
 `extra_requirements_groups=["ngnn"]`. It removes the custom installer/version
 checker and delegates to MTEB's native dependency handling.
-A rebuilt MTEB wheel installed the package through that extra from the local
-release archive. Native missing-dependency handling, 49 focused tests and all
-28 compatible mock tasks passed. The latter used actual anonymous HF
-downloads and synthetic provider embeddings, with no paid OpenAI calls.
+A locally rebuilt MTEB 2.20.10 wheel installed `ngnn-encoder` through that
+extra from the public PyPI index. The verification environment reused the
+recorded numerical dependencies; the NGNN package was initially absent.
+49 focused tests and all 28 compatible mock tasks passed. The latter used
+fresh anonymous HF downloads and synthetic provider embeddings, with no
+paid OpenAI calls. See the [publication receipt](verification/pypi_publication.json),
+[installation receipt](verification/pypi_installation.json), and
+[mock report](verification/public_hub_mock_run.md).
 
-After the PyPI upload: anonymously verify both archive hashes, install using
-the public index, recheck dependency resolution/lockfile as required by the
-upstream checkout, and apply the prepared patch to the existing MTEB PR.
-The active adapter remains functional through the existing GitHub wheel
-while this step is pending.
+The native extra is proposed in [MTEB PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400).
+Until that PR is merged and released, install its checkout with `pip install '.[ngnn]'`;
+the existing PyPI MTEB release does not yet contain this model or extra.
+The adapter contains no GitHub-wheel installer or custom package version checker.

@@ -42,11 +42,11 @@ repository, runtime vector cache or hosted NGNN service is required.
 
 ## Installable inference library
 
-The inference-only `ngnn-encoder` 0.1.0 library is distributed as a wheel
-in the [versioned release](https://github.com/steffen181/frozen-ngnn-api-modesl/releases/tag/v0.1.0):
+The inference-only `ngnn-encoder` 0.1.0 library is available on
+[PyPI](https://pypi.org/project/ngnn-encoder/0.1.0/):
 
 ```bash
-python -m pip install "https://github.com/steffen181/frozen-ngnn-api-modesl/releases/download/v0.1.0/ngnn_encoder-0.1.0-py3-none-any.whl"
+python -m pip install ngnn-encoder==0.1.0
 ```
 
 The wheel contains inference code and package metadata. Download the
@@ -105,9 +105,11 @@ to the installed library and pins the verified Hub artifact commit above.
 The model implementation remains under review in
 [MTEB PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400).
 
-To use the adapter locally, install the wheel above, copy it to
-`mteb/models/model_implementations/ngnn.py` in the pinned MTEB checkout, and
-install that checkout. With `OPENAI_API_KEY` in the environment:
+To use the adapter before the PR is merged and released, apply the
+[integration patch](verification/pypi_model.patch) to the pinned MTEB base
+`ed47a25455157433b458db2625e72960468597ab` and install that checkout with
+`python -m pip install '.[ngnn]'`. The extra obtains the library from PyPI.
+With `OPENAI_API_KEY` in the environment:
 
 ```python
 import mteb

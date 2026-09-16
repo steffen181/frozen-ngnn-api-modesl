@@ -1,0 +1,25 @@
+{
+  "checked_on": "2026-09-16",
+  "distribution": "ngnn-encoder",
+  "version": "0.1.0",
+  "project_url": "https://pypi.org/project/ngnn-encoder/0.1.0/",
+  "pypi_uploaded": true,
+  "anonymous_download_hashes_verified": true,
+  "archives_identical_to_reviewed_github_release": true,
+  "files": [
+    {
+      "filename": "ngnn_encoder-0.1.0-py3-none-any.whl",
+      "sha256": "1ea29b3717175aacc2b6f1465d456201446a2c4eec835428526807bd6c7833e3",
+      "size_bytes": 9083,
+      "url": "https://files.pythonhosted.org/packages/aa/68/fcc67671347451967cb74de3850f294b348a5cd6568dd0a72fd10004b175/ngnn_encoder-0.1.0-py3-none-any.whl",
+      "upload_time": "2026-09-16T06:20:34.714874Z"
+    },
+    {
+      "filename": "ngnn_encoder-0.1.0.tar.gz",
+      "sha256": "ac4cc406a4499121baea1454346eef4b51b6866cd3a68ac162de12c7b50b84ff",
+      "size_bytes": 8004,
+      "url": "https://files.pythonhosted.org/packages/44/23/8f858f417608e802dfbe0be663f9a9b8ed9bc1d220d04122c9843ed5773c/ngnn_encoder-0.1.0.tar.gz",
+      "upload_time": "2026-09-16T06:20:36.004857Z"
+    }
+  ]
+}
