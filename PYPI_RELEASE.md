@@ -37,3 +37,11 @@ The native extra is proposed in [MTEB PR #5400](https://github.com/embeddings-be
 Until that PR is merged and released, install its checkout with `pip install '.[ngnn]'`;
 the existing PyPI MTEB release does not yet contain this model or extra.
 The adapter contains no GitHub-wheel installer or custom package version checker.
+
+The PR also includes the generated universal `uv.lock`. Its
+[immutable download and verification](verification/uv_lock_2026-09-16.json)
+record the SHA-256, `uv lock --check` and a frozen NGNN sync dry-run.
+The portable patch above contains only adapter, dependency declarations
+and mock report; use the full PR checkout for frozen uv installation.
+Regeneration also reconciles the base configuration's already-declared
+MTEB version and LanguageBind dependencies with its older lock.

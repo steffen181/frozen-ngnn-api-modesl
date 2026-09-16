@@ -1,0 +1,38 @@
+{
+  "checked_on": "2026-09-16",
+  "upstream_base": "ed47a25455157433b458db2625e72960468597ab",
+  "uv_version": "0.12.15",
+  "lock_check": "passed",
+  "lock_diff_check": "passed",
+  "resolved_packages": 563,
+  "lock_size_bytes": 74521070,
+  "lock_sha256": "ff375dd348b0393a1806766c6258455b4d185a994a6b004351dc89347af9e78f",
+  "pyproject_sha256": "426a549940b5787d75f52acf92ce5276f0c98256a2021c133a19d25de3994630",
+  "lock_diff": {
+    "added_lines": 6384,
+    "removed_lines": 5272,
+    "patch_bytes": 131747969
+  },
+  "existing_dependency_versions_retained": true,
+  "base_lock_drift_reconciled": [
+    "MTEB locked version 2.20.0 to declared 2.20.10",
+    "Previously declared LanguageBind extra and its transitive dependencies"
+  ],
+  "ngnn_archive_hashes_match_pypi": true,
+  "frozen_ngnn_sync_dry_run": {
+    "exit_code": 0,
+    "command": "uv sync --frozen --no-default-groups --extra ngnn --dry-run --python /usr/bin/python3",
+    "python_version": "3.10",
+    "required_versions": {
+      "ngnn-encoder": "0.1.0",
+      "numpy": "2.2.6",
+      "torch": "2.11.0",
+      "openai": "2.43.0",
+      "tiktoken": "0.13.0"
+    },
+    "log_sha256": "9419f5025fcde8a98b36f05208461f4f18b625ee585b0408434fce7ca9381dc7"
+  },
+  "submitted_commit": "03e7b2164d66cd948fa22a1c44fa825e8e408a87",
+  "lock_url": "https://raw.githubusercontent.com/steffen181/mteb/03e7b2164d66cd948fa22a1c44fa825e8e408a87/uv.lock",
+  "model_pr_url": "https://github.com/embeddings-benchmark/mteb/pull/5400"
+}
