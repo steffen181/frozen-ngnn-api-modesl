@@ -107,7 +107,7 @@ The model implementation remains under review in
 
 To use the adapter before the PR is merged and released, apply the
 [integration patch](verification/pypi_model.patch) to the pinned MTEB base
-`73ed2a32d590f310fa6d21fbdbf873716aea0cce` and install that checkout with
+`b5b023003a8341b3b697b03ee81cc484aee2ec95` and install that checkout with
 `python -m pip install '.[ngnn]'`. The extra obtains the library from PyPI.
 With `OPENAI_API_KEY` in the environment:
 
@@ -238,7 +238,8 @@ scales. This excludes the API model, tokenizer/client, temporary buffers and
 process overhead. It is not a whole-model memory figure.
 [Measured local tensor sizes](verification/local_compressor_size.json).
 
-The PyPI distribution and MTEB `ngnn` extra are prepared and tested, but
-PyPI publication is pending publishing access. The existing adapter retains
-the verified GitHub-wheel installation route until the PyPI upload succeeds.
-[Release preparation and next step](PYPI_RELEASE.md).
+The inference-only distribution `ngnn-encoder==0.1.0` is published on PyPI.
+The proposed MTEB adapter uses the native `ngnn` extra; install the PR checkout
+with `pip install '.[ngnn]'` until it is merged and released. The former
+GitHub-wheel installer has been removed.
+[Release and integration verification](PYPI_RELEASE.md).

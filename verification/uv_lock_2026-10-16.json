@@ -1,0 +1,95 @@
+{
+  "checked_on": "2026-10-16",
+  "upstream_base": "b5b023003a8341b3b697b03ee81cc484aee2ec95",
+  "uv_version": "0.12.15",
+  "resolved_packages": 557,
+  "requires_python": ">=3.11, <3.15",
+  "lock_size_bytes": 81303609,
+  "upstream_lock_size_bytes": 68563867,
+  "lock_sha256": "73daa29a8b61f64e70aa6899483920da180fb4afb78f7e296a3719e0709e000b",
+  "pyproject_sha256": "d3dce8a356e9352dcab4ee041c141f2776e4e52f9feedd86eb3e506b717cd33e",
+  "package_version_changes": {
+    "mteb": {
+      "base": [
+        "2.24.8"
+      ],
+      "merged": [
+        "2.26.2"
+      ]
+    },
+    "ngnn-encoder": {
+      "base": [],
+      "merged": [
+        "0.1.0"
+      ]
+    },
+    "numpy": {
+      "base": [
+        "1.26.4",
+        "2.3.5",
+        "2.4.6"
+      ],
+      "merged": [
+        "1.26.4",
+        "2.2.6",
+        "2.3.5",
+        "2.4.6"
+      ]
+    },
+    "numpy-typing-compat": {
+      "base": [
+        "20251206.1.25",
+        "20251206.2.3",
+        "20251206.2.4"
+      ],
+      "merged": [
+        "20251206.1.25",
+        "20251206.2.2",
+        "20251206.2.3",
+        "20251206.2.4"
+      ]
+    },
+    "openai": {
+      "base": [
+        "2.41.0"
+      ],
+      "merged": [
+        "2.41.0",
+        "2.43.0"
+      ]
+    },
+    "sentence-transformers": {
+      "base": [
+        "5.3.0",
+        "5.5.1",
+        "6.0.1"
+      ],
+      "merged": [
+        "5.3.0",
+        "5.5.1",
+        "6.0.1",
+        "6.1.0"
+      ]
+    }
+  },
+  "existing_dependency_versions_retained": false,
+  "shared_archive_hashes_verified": 6465,
+  "shared_archive_hash_changes": [],
+  "model_pr_url": "https://github.com/embeddings-benchmark/mteb/pull/5400",
+  "existing_external_dependency_versions_retained": true,
+  "upstream_lock_reconciliation": {
+    "project_version": "Base pyproject already declares MTEB 2.26.2; its older lock still recorded 2.24.8.",
+    "sentence_transformers": "Base pyproject already requires sentence-transformers>=6.1.0 for an optional extra; generation adds that branch while retaining prior alternatives."
+  },
+  "lock_check": {
+    "exit_code": 0,
+    "log_sha256": "62bed1257bf2c878dc9ab8b6bdbf6fa5c52230760b7187202e4a91f521d96542"
+  },
+  "frozen_ngnn_sync_dry_run": {
+    "exit_code": 0,
+    "log_sha256": "3b21a68f214fbfcb1abb8815ea69bc8ed08cea3ec72275054664f751aed8662e"
+  },
+  "submitted_commit": "bb1d5c79e8d3a2a1952afacd0c7278a3384430ba",
+  "lock_url": "https://raw.githubusercontent.com/steffen181/mteb/bb1d5c79e8d3a2a1952afacd0c7278a3384430ba/uv.lock",
+  "lock_diff_check": "passed"
+}

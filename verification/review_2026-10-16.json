@@ -18,5 +18,27 @@
   "four_task_results_unchanged": true,
   "canonical_revision_unchanged": true,
   "live_api_calls": 0,
-  "upstream_ci_pending": true
+  "upstream_ci_pending": true,
+  "current_upstream": {
+    "base": "b5b023003a8341b3b697b03ee81cc484aee2ec95",
+    "version": "2.26.2",
+    "python": "3.11.15",
+    "installation": "fresh environment with CPU torch==2.11.0+cpu, then actual local MTEB checkout with [ngnn] from public PyPI",
+    "adapter_tests_passed": 8,
+    "adapter_tests_log_sha256": "7c2884c78242845844e826b6758fb6b5ee8e0b8b10331c06b6746ef627ed6022",
+    "mock_report": "mock_run_current_2026-10-16.json",
+    "mock_tasks_passed": 28,
+    "live_api_calls": 0,
+    "ruff": "passed",
+    "ruff_format": "passed",
+    "lock_generation": "passed",
+    "portable_patch_applied_and_byte_verified": true,
+    "lock_check": "passed",
+    "frozen_ngnn_sync_dry_run": "passed",
+    "lock_record": "uv_lock_2026-10-16.json",
+    "submitted_commit": "bb1d5c79e8d3a2a1952afacd0c7278a3384430ba"
+  },
+  "initial_upstream_base": "73ed2a32d590f310fa6d21fbdbf873716aea0cce",
+  "six_release_inputs_unchanged": true,
+  "original_run_settings_sha256": "8333b72623dfc6b090206c6753b84debf66bd32f728b705c28e6e39b365b797e"
 }

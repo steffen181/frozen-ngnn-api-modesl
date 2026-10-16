@@ -52,5 +52,10 @@
     "summary.json",
     "provider_preparation.json",
     "../../verification/revision_alias.json"
-  ]
+  ],
+  "original_run_settings": {
+    "file": "general/run_settings.jsonl",
+    "sha256": "8333b72623dfc6b090206c6753b84debf66bd32f728b705c28e6e39b365b797e",
+    "unchanged_from_original": true
+  }
 }

@@ -39,13 +39,24 @@ the existing PyPI MTEB release does not yet contain this model or extra.
 The adapter contains no GitHub-wheel installer or custom package version checker.
 
 The PR also includes the generated universal `uv.lock`. Its
-[immutable download and verification](verification/uv_lock_2026-09-16.json)
+[immutable download and verification](verification/uv_lock_2026-10-16.json)
 record the SHA-256, `uv lock --check` and a frozen NGNN sync dry-run.
 The portable patch above contains only the adapter and dependency declarations; the mock report was removed from the upstream PR on review request.
 Use the full PR checkout for frozen uv installation.
-Regeneration also reconciles the base configuration's already-declared
-MTEB version and LanguageBind dependencies with its older lock.
+The current portable patch targets MTEB base `b5b023003a8341b3b697b03ee81cc484aee2ec95`.
+The October 16 lock record supersedes the historical September and October 3
+records for this patch; the PyPI 0.1.0 archives are unchanged.
+Regeneration preserves all existing external dependency versions and artifact
+hashes. It also reconciles requirements already present in the upstream
+configuration: MTEB 2.26.2 and Sentence Transformers >=6.1.0 for the optional
+`nemotron-3-5-vl` extra. The older lock had not yet recorded those requirements.
 
-The current portable patch targets MTEB base `73ed2a32d590f310fa6d21fbdbf873716aea0cce`.
-[October 3 lock record](verification/uv_lock_2026-10-03.json) supersedes the
-September lock record for this patch; the PyPI 0.1.0 archives are unchanged.
+A fresh Python 3.11.15 environment installed the actual MTEB 2.26.2 checkout
+with its `ngnn` extra and CPU torch 2.11.0+cpu. All 8 adapter tests and all 28
+compatible mocks pass with the installed PyPI library, local verified Hub
+files and synthetic HTTP responses through the real OpenAI SDK. The CI
+extractor finds the correct model name; its loading helper skips runtime
+loading for unknown total parameter counts, so mocks test that separately.
+This fresh installation and the frozen universal-lock dry-run are separate
+checks. [Current mock report](verification/mock_run_current_2026-10-16.md),
+[review verification](verification/review_2026-10-16.json).
