@@ -1,0 +1,22 @@
+{
+  "checked_on": "2026-10-16",
+  "focused_tests": {
+    "passed": 51,
+    "failed": 0,
+    "baseline_passed": 49,
+    "log_sha256": "5026849fced3b3cb3bd0b13f474d47335285e8abb834944ceaf5cf2bc1a58536"
+  },
+  "regression_red_log_sha256": "539d7068b9925c75112179066838209d97598910b76d94c0031a06d70c639907",
+  "native_integration": "mock_run_2026-10-16.json",
+  "portable_patch_applied_and_byte_verified": true,
+  "ruff": "passed",
+  "ruff_format": "passed",
+  "uv_lock_check": "passed",
+  "frozen_ngnn_sync_dry_run": "passed",
+  "inference_core_sha256": "2fc2aa0361360ef6a1cff8bbf785c0e6a3417c4fa392ce052ea20d4c38cadb8a",
+  "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+  "four_task_results_unchanged": true,
+  "canonical_revision_unchanged": true,
+  "live_api_calls": 0,
+  "upstream_ci_pending": true
+}

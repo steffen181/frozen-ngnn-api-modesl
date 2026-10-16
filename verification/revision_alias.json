@@ -40,14 +40,17 @@
   ],
   "model_meta": {
     "evaluated_sha256": "ba3bd961e0db6302a44e04ae2d6a688b3c60eaef3972f1621f88410f1b993519",
-    "submission_sha256": "18d7c8eeffbeee77593493a2a6104e7e450ce691ef87e40fd983598168221382",
+    "submission_sha256": "9230b96298bf9144ac297d1a349639fa47892e92d38531c0254c33a2044b1a29",
     "changed_fields": [
       "revision",
       "license",
-      "extra_requirements_groups"
+      "extra_requirements_groups",
+      "loader_kwargs"
     ],
     "license_correction_date": "2026-09-12",
-    "dependency_correction_date": "2026-09-16"
+    "dependency_correction_date": "2026-09-16",
+    "provider_annotation_date": "2026-10-16",
+    "provider_annotation_scope": "Canonical loader provider coordinates; retrospective metadata annotation, not a newly observed historical endpoint or immutable provider snapshot"
   },
   "live_verification": "The existing real-provider report was run under evaluation_revision; it is preserved without rewriting. No new paid provider call was made for the identifier correction."
 }

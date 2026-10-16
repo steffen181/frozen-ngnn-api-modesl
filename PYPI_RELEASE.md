@@ -41,7 +41,11 @@ The adapter contains no GitHub-wheel installer or custom package version checker
 The PR also includes the generated universal `uv.lock`. Its
 [immutable download and verification](verification/uv_lock_2026-09-16.json)
 record the SHA-256, `uv lock --check` and a frozen NGNN sync dry-run.
-The portable patch above contains only adapter, dependency declarations
-and mock report; use the full PR checkout for frozen uv installation.
+The portable patch above contains only the adapter and dependency declarations; the mock report was removed from the upstream PR on review request.
+Use the full PR checkout for frozen uv installation.
 Regeneration also reconciles the base configuration's already-declared
 MTEB version and LanguageBind dependencies with its older lock.
+
+The current portable patch targets MTEB base `73ed2a32d590f310fa6d21fbdbf873716aea0cce`.
+[October 3 lock record](verification/uv_lock_2026-10-03.json) supersedes the
+September lock record for this patch; the PyPI 0.1.0 archives are unchanged.

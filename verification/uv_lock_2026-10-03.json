@@ -1,0 +1,60 @@
+{
+  "checked_on": "2026-10-03",
+  "upstream_base": "73ed2a32d590f310fa6d21fbdbf873716aea0cce",
+  "uv_version": "0.12.15",
+  "resolved_packages": 572,
+  "lock_size_bytes": 100320714,
+  "upstream_lock_size_bytes": 93249238,
+  "lock_sha256": "66d812d72d8cbb4667bf076441ad6127cf2c1da3e12141e472d47f3754688d52",
+  "pyproject_sha256": "6ddbab42c179e54a851258eb0fdc6fb7aedb0c0e4e8503eed140bb0b76933bee",
+  "package_version_changes": {
+    "openai": {
+      "base": [
+        "2.41.0"
+      ],
+      "merged": [
+        "2.41.0",
+        "2.43.0"
+      ]
+    },
+    "ngnn-encoder": {
+      "base": [],
+      "merged": [
+        "0.1.0"
+      ]
+    },
+    "numpy-typing-compat": {
+      "base": [
+        "20251206.1.25",
+        "20251206.2.3",
+        "20251206.2.4"
+      ],
+      "merged": [
+        "20251206.1.25",
+        "20251206.2.2",
+        "20251206.2.3",
+        "20251206.2.4"
+      ]
+    }
+  },
+  "adapter_unchanged": true,
+  "lock_check": "passed",
+  "frozen_ngnn_sync_dry_run": {
+    "exit_code": 0,
+    "command": "uv sync --frozen --no-default-groups --extra ngnn --dry-run --python /usr/bin/python3",
+    "packages": 95,
+    "required_versions": {
+      "ngnn-encoder": "0.1.0",
+      "numpy": "2.2.6",
+      "torch": "2.11.0",
+      "openai": "2.43.0",
+      "tiktoken": "0.13.0"
+    },
+    "log_sha256": "d48da1ef10c01a7d1598c3933e034cdde19cb461a6c90267f0ae71a14fd2d0a4"
+  },
+  "existing_dependency_versions_retained": true,
+  "submitted_commit": "6a61af642532bac046765c1435928f1670dfbe36",
+  "lock_url": "https://raw.githubusercontent.com/steffen181/mteb/6a61af642532bac046765c1435928f1670dfbe36/uv.lock",
+  "model_pr_url": "https://github.com/embeddings-benchmark/mteb/pull/5400",
+  "lock_diff_check": "passed"
+}

@@ -1,0 +1,56 @@
+{
+  "documented_on": "2026-10-16",
+  "scope": "Retrospective provenance for the unchanged September 6 evaluation; canonical loader metadata for future runs",
+  "provider": "OpenAI",
+  "requested_model": "text-embedding-3-large",
+  "input_dimension": 3072,
+  "requested_dimensions": null,
+  "encoding_format": "float",
+  "canonical_base_url": "https://api.openai.com/v1",
+  "historical_resolved_base_url_recorded": false,
+  "immutable_provider_snapshot": null,
+  "evaluation_date": "2026-09-06",
+  "evaluation_mode": "SHA-verified raw provider response replay through the fixed NGNN encoder",
+  "raw_namespace": "openai-full-raw",
+  "raw_vectors_sha256": "39333ae095c1334b15aa16470858b6f17084cc1b469c8fb5d79d1aba8cf61acb",
+  "task_sources": {
+    "SciFact": "archived raw responses verified against archived normalized vectors",
+    "STSBenchmark": "archived raw responses verified against archived normalized vectors",
+    "Banking77Classification.v2": "archived raw responses verified against archived normalized vectors",
+    "NFCorpus": "3914 raw responses requested for this evaluation"
+  },
+  "source_counts": {
+    "verified_archived_raw_vectors": 15658,
+    "new_nfcorpus_vectors": 3914
+  },
+  "preparation_plan_sha256": "dfeac6a656384694dc3b15ecdf9c83ca54c9d64b56639c1afb22b0934b4aca2c",
+  "canonical_loader_kwargs": {
+    "base_model": "text-embedding-3-large",
+    "base_url": "https://api.openai.com/v1"
+  },
+  "metadata_annotation": "loader_kwargs describes the fixed registered provider contract. Historical request endpoint and immutable provider snapshot were not recorded, and are not retroactively asserted. Original evaluation metadata is preserved.",
+  "reproducibility_limit": "Fixed weights and hashes identify the local transform and evaluated responses. The externally managed API alias can change, so future live API responses are not guaranteed bit-identical.",
+  "task_result_hashes": [
+    {
+      "task": "SciFact",
+      "sha256": "2ab8a244217a64e4ef2d83f3fafa038639a84583622e3794de34a62056b98b54"
+    },
+    {
+      "task": "STSBenchmark",
+      "sha256": "c1fe167ff0abf35092212a04eb0e54a4423b98d29d54d5ab12c09cef9614320d"
+    },
+    {
+      "task": "Banking77Classification.v2",
+      "sha256": "f8fb597fa3be9ab6bbb7eef68d24ff28779f8c0ce32e4259bafd133710aeaf2c"
+    },
+    {
+      "task": "NFCorpus",
+      "sha256": "6cd8c69e9c4fec52b61b41ac0f2baa0ee764b50c5d88834377a5b69e9e489a10"
+    }
+  ],
+  "evidence": [
+    "summary.json",
+    "provider_preparation.json",
+    "../../verification/revision_alias.json"
+  ]
+}

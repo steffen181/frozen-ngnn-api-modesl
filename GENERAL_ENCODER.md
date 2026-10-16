@@ -107,7 +107,7 @@ The model implementation remains under review in
 
 To use the adapter before the PR is merged and released, apply the
 [integration patch](verification/pypi_model.patch) to the pinned MTEB base
-`ed47a25455157433b458db2625e72960468597ab` and install that checkout with
+`73ed2a32d590f310fa6d21fbdbf873716aea0cce` and install that checkout with
 `python -m pip install '.[ngnn]'`. The extra obtains the library from PyPI.
 With `OPENAI_API_KEY` in the environment:
 
@@ -125,6 +125,21 @@ The package checks the artifact SHA-256 and requires PyTorch 2.11.0 because
 top-k tie behavior affects this compressor. Public Hub downloads explicitly
 disable authentication tokens. This model is not yet included in an official
 MTEB release.
+
+The MTEB adapter always loads the pinned Hub artifact and creates its own OpenAI
+client at `https://api.openai.com/v1`. Local `artifact_path`, `cache_dir` and
+arbitrary `client` overrides are not accepted by the registry loader. Standard
+Hugging Face cache environment settings remain available. Tests and historical
+cache replay instantiate the inference library separately.
+
+Provider coordinates are stored in `ModelMeta.loader_kwargs` (`base_model`,
+`base_url`); `adapted_from` identifies `openai/text-embedding-3-large`. The adapter
+rejects different provider coordinates and does not inherit `OPENAI_BASE_URL`.
+No credentials or client objects are serialized. For the submitted September 6
+results these fields are a retrospective canonical-loader annotation. The actual
+historical resolved endpoint and an immutable provider snapshot were not recorded.
+[Provider provenance and response hashes](evaluation/2026-09-06/provider_provenance.json)
+state these limits; the four TaskResults and original evaluation metadata remain unchanged.
 
 ## Input rules
 
