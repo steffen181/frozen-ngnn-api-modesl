@@ -1,0 +1,107 @@
+{
+  "checked_on": "2026-10-31",
+  "upstream_base": "89acedb50e77d2c10f1f5a9805c9906fa3bfe7d4",
+  "uv_version": "0.13.6",
+  "resolved_packages": 573,
+  "requires_python": ">=3.11, <3.15",
+  "lock_size_bytes": 98421263,
+  "upstream_lock_size_bytes": 89069003,
+  "lock_sha256": "495ad29336b8e463c0c9155b21006efa6acd9dc3c8f2d16dc3bbd1f376d47612",
+  "pyproject_sha256": "ec004cffff17dbc018d4accc5a209c094577201e4d1e810ddf0bd7c4a7c2c95e",
+  "package_version_changes": {
+    "mteb": {
+      "base": [
+        "2.26.14"
+      ],
+      "merged": [
+        "2.26.30"
+      ]
+    },
+    "ngnn-encoder": {
+      "base": [],
+      "merged": [
+        "0.1.0"
+      ]
+    },
+    "numpy": {
+      "base": [
+        "1.26.4",
+        "2.3.5",
+        "2.4.6",
+        "2.5.4"
+      ],
+      "merged": [
+        "1.26.4",
+        "2.2.6",
+        "2.3.5",
+        "2.4.6",
+        "2.5.4"
+      ]
+    },
+    "numpy-typing-compat": {
+      "base": [
+        "20251206.1.25",
+        "20251206.2.3",
+        "20251206.2.4",
+        "20260602.2.3",
+        "20260602.2.4",
+        "20260602.2.5"
+      ],
+      "merged": [
+        "20251206.1.25",
+        "20251206.2.2",
+        "20251206.2.3",
+        "20251206.2.4",
+        "20260602.2.2",
+        "20260602.2.3",
+        "20260602.2.4",
+        "20260602.2.5"
+      ]
+    },
+    "openai": {
+      "base": [
+        "3.35.1"
+      ],
+      "merged": [
+        "2.43.0",
+        "3.35.1"
+      ]
+    },
+    "tiktoken": {
+      "base": [
+        "0.14.0"
+      ],
+      "merged": [
+        "0.13.0",
+        "0.14.0"
+      ]
+    }
+  },
+  "existing_dependency_versions_retained": false,
+  "existing_external_dependency_versions_retained": true,
+  "shared_archive_hashes_verified": 6652,
+  "shared_archive_hash_changes": [],
+  "model_pr_url": "https://github.com/embeddings-benchmark/mteb/pull/5400",
+  "base_archive_count": 6653,
+  "regenerated_archive_count": 6744,
+  "removed_archives": [
+    {
+      "url": "https://files.pythonhosted.org/packages/31/60/2611203cd0ad006ccbd6c4889f4745beecb76115fdc6ee6ea1435c0c1261/zensical-0.0.68-cp311-abi3-manylinux_2_17_armv7l.manylinux2014_armv7l.whl",
+      "package": "zensical",
+      "version": "0.0.68",
+      "hash": "sha256:46e5600dc78ca811f0079c3766038a46419bf6e9bdba30e3e1302a13b8ae9b9b"
+    }
+  ],
+  "removed_archive_scope": "uv 0.13.6 omits one Zensical 0.0.68 ARMv7 documentation-tool wheel; its source archive and eight other wheels remain. This wheel is outside the verified x86_64 CPU NGNN path. The precise filtering cause was not established.",
+  "lock_check": {
+    "exit_code": 0,
+    "log_sha256": "129d7023b3373a0674bb02cd7f7eb77f16864623d4ff8ebdaf2b6c3635195159"
+  },
+  "frozen_ngnn_sync_dry_run": {
+    "exit_code": 0,
+    "log_sha256": "36c319037e66e8503807a28f18544c6a2baa0550ee6a86ae559e78487922fd8f"
+  },
+  "submitted_commit": "e599c2db0988776f7447cd4e2d4861a9990acc4f",
+  "lock_url": "https://raw.githubusercontent.com/steffen181/mteb/e599c2db0988776f7447cd4e2d4861a9990acc4f/uv.lock",
+  "lock_diff_check": "passed"
+}

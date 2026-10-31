@@ -107,7 +107,7 @@ The model implementation remains under review in
 
 To use the adapter before the PR is merged and released, apply the
 [integration patch](verification/pypi_model.patch) to the pinned MTEB base
-`b5b023003a8341b3b697b03ee81cc484aee2ec95` and install that checkout with
+`89acedb50e77d2c10f1f5a9805c9906fa3bfe7d4` and install that checkout with
 `python -m pip install '.[ngnn]'`. The extra obtains the library from PyPI.
 With `OPENAI_API_KEY` in the environment:
 

@@ -1,0 +1,36 @@
+{
+  "checked_on": "2026-10-31",
+  "upstream_base": "89acedb50e77d2c10f1f5a9805c9906fa3bfe7d4",
+  "upstream_version": "2.26.30",
+  "python_version": "3.11.15",
+  "installation": "fresh environment: CPU torch 2.11.0+cpu, then actual MTEB checkout with [ngnn] from public PyPI",
+  "baseline_adapter_tests": {
+    "version": "2.26.2",
+    "passed": 8,
+    "log_sha256": "b0643a8aad52da8ea618bd475c2b8bedc335e0175a974668843fb862ff49396b"
+  },
+  "adapter_tests": {
+    "passed": 8,
+    "failed": 0,
+    "log_sha256": "6e3516ea427ec840e3e9adb66171efce7b617190ef3c51a7052d3112990d8a54"
+  },
+  "native_integration": "mock_run_current_2026-10-31.json",
+  "mock_tasks_passed": 28,
+  "mock_tasks_failed": 0,
+  "ruff": "passed",
+  "ruff_format": "passed",
+  "portable_patch_applied_and_byte_verified": true,
+  "library_version": "0.1.0",
+  "canonical_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
+  "artifact_sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a",
+  "live_api_calls": 0,
+  "lock_generation": "passed",
+  "lock_validation": "passed",
+  "uv_version": "0.13.6",
+  "lock_check": "passed",
+  "frozen_ngnn_sync_dry_run": "passed",
+  "lock_record": "uv_lock_2026-10-31.json",
+  "submitted_commit": "e599c2db0988776f7447cd4e2d4861a9990acc4f",
+  "independent_review_findings": [],
+  "six_release_inputs_and_six_result_files_unchanged": true
+}
