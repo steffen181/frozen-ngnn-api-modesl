@@ -105,6 +105,22 @@ to the installed library and pins the verified Hub artifact commit above.
 The model implementation remains under review in
 [MTEB PR #5400](https://github.com/embeddings-benchmark/mteb/pull/5400).
 
+November 7 review update: MTEB supplies the required model name/revision,
+validates the registered revision and assigns the returned model's metadata.
+The adapter no longer duplicates these steps. Its explicit signature rejects
+unsupported overrides; CPU and canonical-provider checks remain because MTEB
+does not enforce those model-specific conditions. Nine adapter tests and all
+28 compatible mock tasks pass in the existing verified MTEB 2.26.30 environment
+with the updated adapter, local Hub files and synthetic HTTP transport.
+[Verification](verification/review_2026-11-07.json).
+
+The canonical revision is the original public GitHub source commit; the HF
+commit identifies its later distribution in a separate repository. Both
+immutable weight files were downloaded anonymously again on November 7 and
+have the same SHA-256. [Download comparison](verification/revision_identity_2026-11-07.json).
+This adapter update does not change either revision, the inference library,
+weights or submitted results.
+
 To use the adapter before the PR is merged and released, apply the
 [integration patch](verification/pypi_model.patch) to the pinned MTEB base
 `89acedb50e77d2c10f1f5a9805c9906fa3bfe7d4` and install that checkout with

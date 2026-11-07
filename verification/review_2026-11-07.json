@@ -1,0 +1,54 @@
+{
+  "checked_on": "2026-11-07",
+  "base_local_commit": "f112973e8aebf8b147c3bb52212577afde573dee",
+  "model_pr_parent": "e599c2db0988776f7447cd4e2d4861a9990acc4f",
+  "mteb_version": "2.26.30",
+  "environment": "Existing verified Python 3.11.15 environment; installed MTEB adapter replaced with reviewed candidate. No fresh dependency installation in this follow-up.",
+  "ngnn_encoder_version": "0.1.0",
+  "adapter_sha256": "2dcc2ea62acd7327e6ed085f4492d280505a7f8419db9ea5fa0b3a148a2d9444",
+  "adapter_tests": {
+    "passed": 9,
+    "failed": 0,
+    "independently_repeated": true
+  },
+  "mock_tasks": {
+    "passed": 28,
+    "failed": 0,
+    "smoke_bit_exact": true,
+    "actual_hub_download": false,
+    "live_api_calls": 0,
+    "provider": "Real OpenAI SDK with synthetic HTTP transport"
+  },
+  "ci_extractor_passed": true,
+  "ci_loading_helper_result": "n_parameters not specified. Not tested.",
+  "ruff_check": "passed",
+  "ruff_format": "passed",
+  "portable_patch": {
+    "base": "89acedb50e77d2c10f1f5a9805c9906fa3bfe7d4",
+    "applied": true,
+    "adapter_and_pyproject_byte_verified": true
+  },
+  "dependency_and_lock_changes": false,
+  "unchanged_release_inputs": 6,
+  "unchanged_result_files": 6,
+  "canonical_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
+  "hf_artifact_revision": "bab7d30011438e52f22be540067c73ca37f462eb",
+  "independent_review": {
+    "checked_on": "2026-11-07",
+    "reviewer": "independent code-review agent",
+    "blocking_findings": [],
+    "important_findings": [],
+    "focused_tests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "minor_findings_resolved": [
+      "Clarified that verification/revision_alias.json is in the public reference repository."
+    ]
+  },
+  "limits": [
+    "No new quality measurement or paid API call.",
+    "Mock runtime uses local verified Hub files; separate anonymous downloads compare original GitHub and HF weights.",
+    "CI loading helper skips models with unknown total parameter count; native mocks exercise runtime separately."
+  ]
+}

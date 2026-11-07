@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-11-07",
+  "canonical_revision": "d6969c26400944d4f5200ebddfdc04a083fd7b75",
+  "hf_artifact_revision": "bab7d30011438e52f22be540067c73ca37f462eb",
+  "anonymous_downloads": {
+    "canonical_github_weights": {
+      "url": "https://raw.githubusercontent.com/steffen181/frozen-ngnn-api-modesl/d6969c26400944d4f5200ebddfdc04a083fd7b75/model.npz",
+      "bytes": 5843713,
+      "sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a"
+    },
+    "hf_distribution_weights": {
+      "url": "https://huggingface.co/steffen-negabo/ngnn-general-encoder-v1/resolve/bab7d30011438e52f22be540067c73ca37f462eb/model.npz",
+      "bytes": 5843713,
+      "sha256": "e55ba67998039ba7cb4837798b0464e06e5939245d3275802cbbd6f0aa3fcb6a"
+    }
+  },
+  "identical_weights": true
+}
